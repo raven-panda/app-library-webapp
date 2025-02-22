@@ -15,7 +15,7 @@ export default function WelcomePage() {
   };
 
   return <>
-    <div className="ebr_welcome-header" data-advanced={isFormAdvancedMode}>
+    <header className="ebr_welcome-header" data-advanced={isFormAdvancedMode}>
       <h1><span className="font-accent-blue">E.</span>brary, {t("welcomePage.title")}</h1>
       <h2>{t("welcomePage.subTitle")}</h2>
 
@@ -26,6 +26,6 @@ export default function WelcomePage() {
           <SearchBar placeholder={t("form.searchAllInput")} name="searchAllInput"/>
         </EbrForm>
       }
-    </div>
+    </header>
   </>;
 }

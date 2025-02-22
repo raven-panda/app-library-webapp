@@ -6,10 +6,19 @@ interface CustomResource extends Resource {
 }
 
 interface CustomLanguage extends ResourceLanguage {
-  [namespace: string]: {
+  translation: {
     loading: string;
     pageNotFound: string;
     pageNotFoundBack: string;
+
+    welcomePage: {
+      title: string;
+      subTitle: string;
+    }
+
+    form: {
+      searchAllInput: string;
+    }
   };
 }
 
@@ -18,14 +27,32 @@ const resources: CustomResource = {
     translation: {
       loading: "Loading",
       pageNotFound: "Oops! This page doesn't exists.",
-      pageNotFoundBack: "Go back to previous page"
+      pageNotFoundBack: "Go back to previous page",
+      
+      welcomePage: {
+         title: "the online library",
+         subTitle: "Your favorite books in just a few clicks"
+      },
+
+      form: {
+        searchAllInput: "Search a book title, an author, an editor, etc."
+      }
     }
   },
   fr: {
     translation: {
       loading: "Chargement",
       pageNotFound: "Oops! Cette page n'existe pas.",
-      pageNotFoundBack: "Revenir en arrière"
+      pageNotFoundBack: "Revenir en arrière",
+
+      welcomePage: {
+        title: "la bibliothèque en ligne",
+        subTitle: "Vos livres préféré en quelque clics"
+      },
+
+      form: {
+        searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc."
+      }
     }
   }
 };

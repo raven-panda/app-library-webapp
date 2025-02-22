@@ -1,6 +1,6 @@
-import { FormEvent, ReactNode } from "react";
+import { FormEvent, FormHTMLAttributes, ReactNode } from "react";
 
-export default function EbrForm({ children, className, defaultData, onSubmit }: {children: ReactNode; className?: string; defaultData?: Record<string, any>; onSubmit: (data: any) => void}) {
+export default function EbrForm({ children, className, defaultData, onSubmit, ...props }: {children: ReactNode; defaultData?: Record<string, any>; onSubmit: (data: any) => void} & FormHTMLAttributes<HTMLFormElement>) {
   const _onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
@@ -17,7 +17,7 @@ export default function EbrForm({ children, className, defaultData, onSubmit }: 
     return value;
   };
   
-  return <form action="#" onSubmit={_onSubmit} className={"ebr_form " + (className ?? "")} noValidate>
+  return <form {...props} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
     {children}
   </form>;
 }

@@ -1,0 +1,19 @@
+@use "../../assets/scss/variable";
+@use "../../assets/scss/mixins" as *;
+
+.ebr_welcome-header {
+  background-image: url("../../assets/images/a-book-3480216_1920.jpg");
+  background-size: cover;
+  background-position-y: 70%;
+  @include flex(column);
+  color: var(--font-secondary);
+  align-items: center;
+  padding: 60px 0;
+
+  h1 {
+    font-size: 3.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}

@@ -48,6 +48,8 @@
 
 .ebr_form {
   display: flex;
+  flex-direction: column;
+  row-gap: 12px;
   width: 100%;
 }
 

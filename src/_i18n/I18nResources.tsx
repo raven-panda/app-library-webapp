@@ -23,6 +23,12 @@ interface CustomLanguage extends ResourceLanguage {
 
     form: {
       searchAllInput: string;
+
+      author: string;
+      title: string;
+      editor: string;
+      isbn: string;
+
       searchButtonAriaLabel: string;
       searchFieldAriaLabel: string;
       resetButtonAriaLabel: string;
@@ -45,6 +51,12 @@ const resources: CustomResource = {
 
       form: {
         searchAllInput: "Search a book title, an author, an editor, etc.",
+
+        author: "Search an author",
+        title: "Search a title",
+        editor: "Search an editor",
+        isbn: "Search an ISBN",
+
         searchButtonAriaLabel: "Search button",
         searchFieldAriaLabel: "Field input for text to search",
         resetButtonAriaLabel: "Reset text field",
@@ -68,13 +80,19 @@ const resources: CustomResource = {
 
       form: {
         searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc.",
+
+        author: "Rechercher un auteur",
+        title: "Rechercher un titre",
+        editor: "Rechercher un éditeur",
+        isbn: "Rechercher un ISBN",
+
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
         resetButtonAriaLabel: "Effacer le texte du champ",
         searchModeToggle: {
           false: "Recherche avancée",
           true: "Recherche simple"
-        } 
+        }
       }
     }
   }

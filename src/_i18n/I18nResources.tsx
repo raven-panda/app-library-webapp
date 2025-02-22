@@ -1,5 +1,10 @@
 import { Resource, ResourceLanguage } from "i18next";
 
+interface ToggleResource {
+  false: string;
+  true: string;
+}
+
 // Recreating more type specified interface for language to make sure that all language props are present in each resource
 interface CustomResource extends Resource {
   [language: string]: CustomLanguage;
@@ -18,6 +23,7 @@ interface CustomLanguage extends ResourceLanguage {
 
     form: {
       searchAllInput: string;
+      searchModeToggle: ToggleResource;
     }
   };
 }
@@ -35,7 +41,11 @@ const resources: CustomResource = {
       },
 
       form: {
-        searchAllInput: "Search a book title, an author, an editor, etc."
+        searchAllInput: "Search a book title, an author, an editor, etc.",
+        searchModeToggle: {
+          false: "Advanced search",
+          true: "Simple search"
+        }
       }
     }
   },
@@ -51,7 +61,11 @@ const resources: CustomResource = {
       },
 
       form: {
-        searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc."
+        searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc.",
+        searchModeToggle: {
+          false: "Recherche avancée",
+          true: "Recherche simple"
+        } 
       }
     }
   }

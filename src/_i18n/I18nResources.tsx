@@ -25,6 +25,7 @@ interface CustomLanguage extends ResourceLanguage {
       searchAllInput: string;
       searchButtonAriaLabel: string;
       searchFieldAriaLabel: string;
+      resetButtonAriaLabel: string;
       searchModeToggle: ToggleResource;
     }
   };
@@ -46,6 +47,7 @@ const resources: CustomResource = {
         searchAllInput: "Search a book title, an author, an editor, etc.",
         searchButtonAriaLabel: "Search button",
         searchFieldAriaLabel: "Field input for text to search",
+        resetButtonAriaLabel: "Reset text field",
         searchModeToggle: {
           false: "Advanced search",
           true: "Simple search"
@@ -68,6 +70,7 @@ const resources: CustomResource = {
         searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc.",
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
+        resetButtonAriaLabel: "Effacer le texte du champ",
         searchModeToggle: {
           false: "Recherche avancée",
           true: "Recherche simple"

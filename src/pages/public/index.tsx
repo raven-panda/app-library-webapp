@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
 import "./style.scss";
-import SearchBar from "../../components/form/SearchBar";
+import Input from "../../components/form/Input";
 import EbrForm from "../../components/form/Form";
 import { useState } from "react";
 import Button from "../../components/form/Button";
-import { Rewind, Sliders } from "react-feather";
+import { Rewind, Search, Sliders } from "react-feather";
+import { TFunction } from "i18next";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
@@ -21,11 +22,15 @@ export default function WelcomePage() {
 
       <Button id="form-advanced-mode-toggle" onClick={() => setFormAdvancedMode(prev => !prev)}><div className="ebr_icon">{isFormAdvancedMode ? <Rewind /> : <Sliders />}</div> {t(`form.searchModeToggle.${isFormAdvancedMode.toString()}`)}</Button>
       {isFormAdvancedMode ?
-        <>a</> :
+        <AdvancedSearchForm t={t} /> :
         <EbrForm onSubmit={onSubmit}>
-          <SearchBar placeholder={t("form.searchAllInput")} name="searchAllInput"/>
+          <Input placeholder={t("form.searchAllInput")} name="searchAllInput" type="iconinput" icon={<Search size={24}/>} iconButtonType="submit" />
         </EbrForm>
       }
     </header>
   </>;
+}
+
+function AdvancedSearchForm({t}: {t: TFunction<"translation", undefined>}) {
+  return <></>;
 }

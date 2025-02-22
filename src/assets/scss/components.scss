@@ -1,6 +1,7 @@
 @use "./variable";
 
 .ebr_input {
+  position: relative;
   display: flex;
   background-color: var(--bg-secondary-faded);
   padding: 13px;
@@ -18,12 +19,23 @@
   }
 
   & > input {
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 0 13px 0 55px;
     font: inherit;
     color: var(--font-secondary);
     background: none;
     border: none;
     outline: none;
     width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    transition: background-color ease-in-out 0.3s;
+
+    &:focus {
+      background: var(--bg-tertiary-faded);
+    }
 
     &::placeholder {
       color: var(--font-secondary-faded);
@@ -40,7 +52,7 @@
   padding: 4px;
   border-radius: 8px;
   transition: color ease-in-out 0.1s, background-color ease-in-out 0.1s;
-  &:hover {
+  &:hover, &:focus-visible {
     background: rgba(0, 0, 0, 0.1);
     color: var(--font-secondary-hover);
   }

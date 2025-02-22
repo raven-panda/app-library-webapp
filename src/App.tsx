@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/error/not-found-page';
 import { PUBLIC_ROUTES } from './router';
-import { ThemeProvider } from './hook/theme';
+import { ThemeProvider } from './hook/Theme';
 
 function App() {
   const {t} = useTranslation();

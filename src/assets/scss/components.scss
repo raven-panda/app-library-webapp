@@ -9,9 +9,12 @@
   align-items: center;
   column-gap: 10px;
   width: 100%;
+  transition: background-color ease-in-out 0.3s;
 
   button {
     color: var(--font-secondary);
+    border-radius: 100%;
+    padding: 6px;
   }
 
   & > input {
@@ -31,4 +34,14 @@
 .ebr_form {
   display: flex;
   width: 100%;
+}
+
+.ebr_button {
+  padding: 4px;
+  border-radius: 8px;
+  transition: color ease-in-out 0.1s, background-color ease-in-out 0.1s;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--font-secondary-hover);
+  }
 }

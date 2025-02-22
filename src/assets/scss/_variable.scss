@@ -6,13 +6,23 @@ body {
   --bg-tertiary: #C8B596;
 
   --font-primary: #060606;
+  --font-primary-hover: #626254;
   --font-primary-faded: rgba(6, 6, 6, 0.7);
   --font-secondary: #FCFCFC;
+  --font-secondary-hover: #fff586;
   --font-secondary-faded: rgba(252, 252, 252, 0.7);
   --font-tertiary: #FFEA00;
   --font-accent-blue: #5FF4FF;
 }
 
 body.dark {
-  
+  --bg-primary: #353638;
+  --bg-secondary: #343e5a;
+  --bg-secondary-faded: rgba(52, 62, 90, 0.7);
+  --bg-secondary-faded2: rgba(52, 62, 90, 0.3);
+  --bg-tertiary: #524125;
+
+  --font-primary: #FCFCFC;
+  --font-primary-hover: #c8c8a7;
+  --font-primary-faded: rgba(252, 252, 252, 0.7);
 }

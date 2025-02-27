@@ -87,7 +87,8 @@ export const getSearchFormBuilderAndMatrix: FormBuilderGetter = (translate) => (
       type: "number",
       label: <><FileText size={"1rem"} /> {translate("form.minReviewsNumber")}</>,
       placeholder: translate("form.numberPlaceholder"),
-      required: false
+      required: false,
+      assertion: "NUMBER_NOT_ZERO"
     },
     {
       name: "priceRange",

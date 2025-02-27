@@ -60,10 +60,16 @@ interface CustomLanguage extends ResourceLanguage {
       resetButtonAriaLabel: string;
       inputAriaLabel: string;
       searchModeToggle: ToggleResource;
+
+      submit: string;
+      search: string;
     };
 
     assertions: {
       atLeastOneValueSet: string;
+      atLeastOneValueSpecifiedSet: string;
+      
+      numberNotZero: string;
     }
 
     bookGenre: {
@@ -169,10 +175,16 @@ const resources: CustomResource = {
           false: "Advanced search",
           true: "Simple search"
         },
+
+        submit: "Submit",
+        search: "Search"
       },
 
       assertions: {
         atLeastOneValueSet: "At least one value must be set",
+        atLeastOneValueSpecifiedSet: "At least one of these value must be set : ",
+
+        numberNotZero: "This value must be higher than 0"
       },
 
       bookGenre: {
@@ -276,10 +288,15 @@ const resources: CustomResource = {
           false: "Recherche avancée",
           true: "Recherche simple"
         },
+        submit: "Envoyer",
+        search: "Rechercher"
       },
 
       assertions: {
         atLeastOneValueSet: "Au moins une valeur doit être completée",
+        atLeastOneValueSpecifiedSet: "Au moins une de ces valeurs doit être completée : ",
+
+        numberNotZero: "La valeur de ce champ doit être supérieur à zéro"
       },
 
       bookGenre: {

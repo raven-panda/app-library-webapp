@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels } from "../../types/enums/AssertionEnum";
 
-export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, ...props }: {defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: any) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[] } & FormHTMLAttributes<HTMLFormElement>) {
+export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton, ...props }: {defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: any) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton: ReactNode; } & FormHTMLAttributes<HTMLFormElement>) {
   const {t} = useTranslation();
   const [formData, setFormData] = useState<Record<string, string|number|boolean|number[]|undefined>>(defaultData ?? {});
   const [globalErrors, setGlobalErrors] = useState<string[]>();
@@ -74,7 +74,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     } else if (validationData.invalidFields && validationData.invalidFields.length > 0) {
       toast.error(<div>
         <p>{t("invalidForm")}</p>
-        <p>{validationData.invalidFields.map(f => f.label ?? f.name).join(", ")}, {validationData.invalidFields.map(f => f.message).join(", ")}</p>
+        <p>{validationData.invalidFields.map(f => f.label ?? <>{f.name}</>)}, {validationData.invalidFields.map(f => f.message).join(", ")}</p>
       </div>);
       setErrors(validationData.invalidFields.map(({name, message}) => ({
         fieldName: name,
@@ -150,6 +150,8 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     switch (field.assertion) {
       case "EMAIL":
         return typeof value === "string" && emailRegex.test(value);
+      case "NUMBER_NOT_ZERO":
+        return typeof value === "number" && value > 0;
       default:
         return true;
     }
@@ -158,6 +160,6 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
   return <form {...props} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
     {globalErrors && <p className="ebr_input-error">{globalErrors.join(", ")}</p>}
     {buildForm(errors)}
-    <button type="submit">Envoie</button>
+    {submitButton}
   </form>;
 }

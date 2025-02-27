@@ -35,6 +35,7 @@ export default function WelcomePage() {
               required: true
             }
           ]}
+          submitButton={<></>}
         />
       }
     </header>
@@ -48,6 +49,7 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
     formBuilder={formBuilder}
     formMatrix={formMatrix}
     assertions={globalAssertions}
+    submitButton={<Button variant="filled" size="lg"><Search /> {t("form.search")}</Button>}
   />;
 }
 

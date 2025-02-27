@@ -135,20 +135,41 @@
 }
 
 .ebr_form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
   width: 100%;
+
+  > :not(:last-child) {
+    margin-bottom: 14px;
+  }
 }
 
 .ebr_button {
-  padding: 4px;
   border-radius: 8px;
   transition: color ease-in-out 0.1s, background-color ease-in-out 0.3s;
   &:hover, &:focus-visible {
     background: rgba(0, 0, 0, 0.1);
     color: var(--font-secondary-hover);
   }
+}
+
+.ebr_button-filled {
+  background: var(--bg-tertiary);
+  flex: 0 1;
+  &:hover, &:focus-visible {
+    background: var(--bg-tertiary-faded);
+    color: var(--font-secondary-hover);
+  }
+}
+
+.ebr_button-sm {
+  padding: 4px;
+}
+
+.ebr_button-md {
+  padding: 10px 12px;
+}
+
+.ebr_button-lg {
+  padding: 16px 20px;
 }
 
 .ebr_dropdown-control, .ebr_dropdown-menu {

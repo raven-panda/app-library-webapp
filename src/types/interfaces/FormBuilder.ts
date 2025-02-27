@@ -6,6 +6,7 @@ export interface FormBuilderItem {
   name: string;
   type: HTMLInputTypeAttribute|"iconinput"|"dropdown";
   required: boolean;
+  oneOfRequired?: boolean;
   assertion?: AssertionType;
   placeholder?: string;
   label?: ReactNode|string;

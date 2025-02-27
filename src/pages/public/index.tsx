@@ -4,7 +4,7 @@ import { Rewind, Search, Sliders } from "react-feather";
 import { useTranslation } from "react-i18next";
 import Button from "../../components/form/Button";
 import EbrForm from "../../components/form/Form";
-import { getSearchFormBuilderAndMatrix } from "./form/SearchFormBuilder";
+import { getSearchFormBuilderAndMatrix } from "../../components/welcome-page/SearchFormBuilder";
 import "./style.scss";
 
 export default function WelcomePage() {

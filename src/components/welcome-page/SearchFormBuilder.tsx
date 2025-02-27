@@ -1,10 +1,10 @@
 import { Book, Edit3, FileText, Paperclip, Tag } from "react-feather";
-import { EuroIcon } from "../../../components/icon/EuroIcon";
-import { FormBuilderGetter } from "../../../types/controls/FormBuilderGetter";
-import { BookGenreLabels } from "../../../types/enums/book/BookGenreEnum";
-import { BookThemeLabels } from "../../../types/enums/book/BookThemeEnum";
-import { LanguagesLabel } from "../../../types/enums/LanguagesLabels";
-import { TargetAudienceLabel } from "../../../types/enums/TargetAudienceEnum";
+import { EuroIcon } from "../icon/EuroIcon";
+import { FormBuilderGetter } from "../../types/controls/FormBuilderGetter";
+import { BookGenreLabels } from "../../types/enums/book/BookGenreEnum";
+import { BookThemeLabels } from "../../types/enums/book/BookThemeEnum";
+import { LanguagesLabel } from "../../types/enums/LanguagesLabels";
+import { TargetAudienceLabel } from "../../types/enums/TargetAudienceEnum";
 
 export const getSearchFormBuilderAndMatrix: FormBuilderGetter = (translate) => ({
   formBuilder: [

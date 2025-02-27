@@ -6,10 +6,11 @@ import { useState } from "react";
 import Button from "../../components/form/Button";
 import { Book, Edit3, Paperclip, Rewind, Search, Sliders, Tag } from "react-feather";
 import { TFunction } from "i18next";
+import DropdownMenu from "../../components/DropdownMenu";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
-  const [isFormAdvancedMode, setFormAdvancedMode] = useState(false);
+  const [isFormAdvancedMode, setFormAdvancedMode] = useState(true);
 
   const onSubmit = (value: any) => {
     console.log({value});
@@ -41,5 +42,11 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
       <Input placeholder={t("form.editor")} name="editor" type="iconinput" icon={<Paperclip size={24}/>} iconButtonType="submit" />
       <Input placeholder={t("form.isbn")} name="isbn" type="iconinput" icon={<Tag size={24}/>} iconButtonType="submit" />
     </div>
+    <DropdownMenu title="Contenu et classification">
+      <>Children here</>
+    </DropdownMenu>
+    <DropdownMenu title="Prix et avis">
+      <>Children here</>
+    </DropdownMenu>
   </EbrForm>;
 }

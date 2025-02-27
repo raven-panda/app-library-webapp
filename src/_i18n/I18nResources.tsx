@@ -37,6 +37,9 @@ interface CustomLanguage extends ResourceLanguage {
       theme: string;
       themePlaceholder: string;
 
+      targetAudience: string;
+      targetAudiencePlaceholder: string;
+
       contentSection: string;
       priceReviewsSection: string;
 
@@ -80,6 +83,17 @@ interface CustomLanguage extends ResourceLanguage {
       destinyFreewill: string;
       other: string;
     };
+
+    bookTargetAudience: {
+      academic: string;
+      entertainment: string;
+      personalDevelopment: string;
+      committedAndSocial: string;
+      foreignCulture: string;
+      visuallyImpaired: string;
+      peopleWithReadingDifficulties: string;
+      other: string;
+    };
   };
 }
 
@@ -107,9 +121,12 @@ const resources: CustomResource = {
 
         genre: "Genre",
         genrePlaceholder: "Select a genre",
-        
+
         theme: "Theme",
         themePlaceholder: "Select a theme",
+
+        targetAudience: "Target public",
+        targetAudiencePlaceholder: "Select a target public",
 
         contentSection: "Content and classification",
         priceReviewsSection: "Price and reviews",
@@ -156,7 +173,18 @@ const resources: CustomResource = {
         famillyHeritage: "Family and Heritage (family relationships, family secrets)",
         destinyFreewill: "Destiny and Free Will (fate, choices, predictions)",
         other: "Other"
-      }
+      },
+      
+      bookTargetAudience: {
+        academic: "Academic readers (textbooks, reference books, etc.)",
+        entertainment: "Entertainment literature (light books, comedies, etc.)",
+        personalDevelopment: "Personal development (self-help guides, psychology, etc.)",
+        committedAndSocial: "Engaged and social literature (politics, social issues, etc.)",
+        foreignCulture: "Foreign culture (cultural guides, books for learning a language, etc.)",
+        visuallyImpaired: "Books for visually impaired (braille books, adapted e-books, etc.)",
+        peopleWithReadingDifficulties: "People with reading difficulties (simplified books, large print books, etc.)",
+        other: "Other"
+      }      
     }
   },
   fr: {
@@ -188,6 +216,9 @@ const resources: CustomResource = {
         
         theme: "Thème",
         themePlaceholder: "Sélectionnez un thème",
+
+        targetAudience: "Public cible",
+        targetAudiencePlaceholder: "Sélectionnez un public cible",
 
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
@@ -230,6 +261,17 @@ const resources: CustomResource = {
         lonelinessIsolation: "La solitude et l’isolement (exil, marginalité, survie en solitaire)",
         famillyHeritage: "La famille et l’héritage (relations familiales, secrets de famille)",
         destinyFreewill: "Le destin et le libre arbitre (fatalité, choix, prédictions)",
+        other: "Autre"
+      },
+
+      bookTargetAudience: {
+        academic: "Lecteurs académiques (manuels scolaires, livres de référence, etc.)",
+        entertainment: "Littérature de divertissement (livres légers, comédies, etc.)",
+        personalDevelopment: "Développement personnel (guides pratiques, psychologie, etc.)",
+        committedAndSocial: "Littérature engagée et sociale (la politique, les questions sociales, etc.)",
+        foreignCulture: "Culture étrangère (guide culturels, livre pour apprendre une langue, etc.)",
+        visuallyImpaired: "Livres pour malvoyants (livres en braille, e-books adaptés, etc.)",
+        peopleWithReadingDifficulties: "Personnes ayant des difficultés de lecture (livres simplifiés, livres en grands caractères, etc.)",
         other: "Autre"
       }
     }

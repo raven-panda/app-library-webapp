@@ -10,6 +10,7 @@ import DropdownMenu from "../../components/DropdownMenu";
 import Dropdown from "../../components/form/Dropdown";
 import { BookGenreLabels } from "../../types/enums/book/BookGenreEnum";
 import { BookThemeLabels } from "../../types/enums/book/BookThemeEnum";
+import { TargetAudienceLabel } from "../../types/enums/TargetAudienceEnum";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
@@ -46,6 +47,12 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
     label: t(v)
   }));
 
+  const targetAudienceOptions = Object.entries(TargetAudienceLabel).map(([k, v]) => ({
+    id: k,
+    label: t(v)
+  }));
+
+
   return <EbrForm onSubmit={onSubmit}>
     <div className="row">
       <Input placeholder={t("form.author")} name="author" type="iconinput" icon={<Edit3 size={24}/>} iconButtonType="submit" />
@@ -58,6 +65,7 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
     <DropdownMenu title={t("form.contentSection")}>
       <Dropdown name="genre" label={t("form.genre")} placeholder={t("form.genrePlaceholder")} options={genreOptions} />
       <Dropdown name="theme" label={t("form.theme")} placeholder={t("form.themePlaceholder")} options={themeOptions} />
+      <Dropdown name="targetAudience" label={t("form.targetAudience")} placeholder={t("form.targetAudiencePlaceholder")} options={targetAudienceOptions} />
     </DropdownMenu>
     <DropdownMenu title={t("form.priceReviewsSection")}>
       <>Children here</>

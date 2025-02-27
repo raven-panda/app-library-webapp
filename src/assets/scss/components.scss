@@ -77,6 +77,7 @@
   border-radius: 8px;
 
   > .ebr_dropdown-title-button {
+    font-size: 0.875rem;
     width: 100%;
     border-radius: 8px;
     display: flex;
@@ -119,6 +120,7 @@
 
 .ebr_dropdown-menu > .ebr_dropdown-content {
   grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 50px;
 }
 
 .ebr_dropdown-control {
@@ -149,6 +151,7 @@
     }
 
     button {
+      font-size: 0.875rem;
       text-align: start;
       width: 100%;
 

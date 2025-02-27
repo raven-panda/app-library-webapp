@@ -6,7 +6,7 @@ export default function DropdownMenu({ title, children, isDefaultExpanded = fals
   const dropdownRef = useRef<HTMLDivElement|null>(null);
 
   return <div className="ebr_dropdown-menu" data-expanded={isExpanded}>
-    <button className="ebr_dropdown-title-button" aria-expanded={isExpanded} onClick={() => setExpanded(prev => !prev)}>
+    <button type="button" className="ebr_dropdown-title-button" aria-expanded={isExpanded} onClick={() => setExpanded(prev => !prev)}>
       <span>{title}</span>
       <ChevronDown style={{ transform: `rotate(${isExpanded ? "180deg" : "0deg"})` }} />
     </button>

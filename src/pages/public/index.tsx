@@ -7,6 +7,7 @@ import Button from "../../components/form/Button";
 import { Book, Edit3, Paperclip, Rewind, Search, Sliders, Tag } from "react-feather";
 import { TFunction } from "i18next";
 import DropdownMenu from "../../components/DropdownMenu";
+import Dropdown from "../../components/form/Dropdown";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
@@ -42,10 +43,23 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
       <Input placeholder={t("form.editor")} name="editor" type="iconinput" icon={<Paperclip size={24}/>} iconButtonType="submit" />
       <Input placeholder={t("form.isbn")} name="isbn" type="iconinput" icon={<Tag size={24}/>} iconButtonType="submit" />
     </div>
-    <DropdownMenu title="Contenu et classification">
-      <>Children here</>
+    <DropdownMenu title={t("form.contentSection")}>
+      <Dropdown name="genre" label={t("form.genre")} placeholder={t("form.genrePlaceholder")} options={[
+        {
+          id: "test1",
+          label: "test1"
+        },
+        {
+          id: "test2",
+          label: "test2"
+        },
+        {
+          id: "test3",
+          label: "test3"
+        }
+      ]} />
     </DropdownMenu>
-    <DropdownMenu title="Prix et avis">
+    <DropdownMenu title={t("form.priceReviewsSection")}>
       <>Children here</>
     </DropdownMenu>
   </EbrForm>;

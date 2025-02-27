@@ -1,5 +1,14 @@
 @use "./variable";
 
+.ebr_form-control {
+  display: flex;
+  flex-direction: column;
+
+  > label {
+    margin-bottom: 4px;
+  }
+}
+
 .ebr_input {
   position: relative;
   display: flex;
@@ -67,7 +76,7 @@
   background: var(--bg-secondary-faded2);
   border-radius: 8px;
 
-  .ebr_dropdown-title-button {
+  > .ebr_dropdown-title-button {
     width: 100%;
     border-radius: 8px;
     display: flex;
@@ -86,7 +95,7 @@
     }
   }
 
-  .ebr_dropdown-content {
+  > .ebr_dropdown-content {
     display: none;
     box-sizing: border-box;
     width: 100%;
@@ -94,30 +103,64 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top: none;
-    backdrop-filter: blur(2px);
   }
 
   &[data-expanded="true"] {
-    .ebr_dropdown-title-button {
+    > .ebr_dropdown-title-button {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    .ebr_dropdown-content {
-      display: block;
+    > .ebr_dropdown-content {
+      display: grid;
     }
   }
 }
 
+.ebr_dropdown-menu > .ebr_dropdown-content {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .ebr_dropdown-control {
   position: relative;
-  border: solid 2px var(--font-primary-hover);
+  background: var(--bg-secondary);
 
-  .ebr_dropdown-content {
-    background: var(--bg-secondary-faded2);
+  &[data-expanded="true"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .ebr_dropdown-title-button, > .ebr_dropdown-content button {
+    padding: 10px 12px;
+  }
+
+  > .ebr_dropdown-content {
+    background: var(--bg-secondary);
+    padding: 0;
     position: absolute;
+    z-index: 5;
     top: 100%;
     left: 0;
-    z-index: 3;
+
+    .ebr_dropdown-remove-icon {
+      color: var(--font-accent-red);
+    }
+
+    button {
+      width: 100%;
+
+      &[aria-selected="true"] {
+        background: var(--bg-tertiary);
+        &:hover, &:focus-visible {
+          background: var(--bg-tertiary-faded);
+          color: var(--font-secondary-hover);
+        }
+      }
+
+      &:hover, &:focus-visible {
+        background: rgba(0, 0, 0, 0.1);
+        color: var(--font-secondary-hover);
+      }
+    }
   }
 }

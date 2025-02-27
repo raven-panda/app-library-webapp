@@ -15,11 +15,13 @@ export default function Dropdown({ name, placeholder, label, options, isDefaultE
     setExpanded(false);
   };
 
+  const getSelectPlaceholder = () => options.find(opt => opt.id === value)?.label ?? placeholder;
+
   return <div className="ebr_form-control">
     <label>{label}</label>
     <div className="ebr_dropdown-control" data-expanded={isExpanded}>
       <button type="button" className="ebr_dropdown-title-button" aria-expanded={isExpanded} onClick={() => setExpanded(prev => !prev)}>
-        <span>{placeholder}</span>
+        <span>{getSelectPlaceholder()}</span>
         <ChevronDown style={{ transform: `rotate(${isExpanded ? "180deg" : "0deg"})` }} />
       </button>
       <div ref={dropdownRef} key={value} className="ebr_dropdown-content">

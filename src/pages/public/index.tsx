@@ -8,6 +8,8 @@ import { Book, Edit3, Paperclip, Rewind, Search, Sliders, Tag } from "react-feat
 import { TFunction } from "i18next";
 import DropdownMenu from "../../components/DropdownMenu";
 import Dropdown from "../../components/form/Dropdown";
+import { BookGenreLabels } from "../../types/enums/book/BookGenreEnum";
+import { BookThemeLabels } from "../../types/enums/book/BookThemeEnum";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
@@ -34,6 +36,16 @@ export default function WelcomePage() {
 }
 
 function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefined>; onSubmit: ((data: any) => void)}) {
+  const genreOptions = Object.entries(BookGenreLabels).map(([k, v]) => ({
+    id: k,
+    label: t(v)
+  }));
+
+  const themeOptions = Object.entries(BookThemeLabels).map(([k, v]) => ({
+    id: k,
+    label: t(v)
+  }));
+
   return <EbrForm onSubmit={onSubmit}>
     <div className="row">
       <Input placeholder={t("form.author")} name="author" type="iconinput" icon={<Edit3 size={24}/>} iconButtonType="submit" />
@@ -44,20 +56,8 @@ function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefine
       <Input placeholder={t("form.isbn")} name="isbn" type="iconinput" icon={<Tag size={24}/>} iconButtonType="submit" />
     </div>
     <DropdownMenu title={t("form.contentSection")}>
-      <Dropdown name="genre" label={t("form.genre")} placeholder={t("form.genrePlaceholder")} options={[
-        {
-          id: "test1",
-          label: "test1"
-        },
-        {
-          id: "test2",
-          label: "test2"
-        },
-        {
-          id: "test3",
-          label: "test3"
-        }
-      ]} />
+      <Dropdown name="genre" label={t("form.genre")} placeholder={t("form.genrePlaceholder")} options={genreOptions} />
+      <Dropdown name="theme" label={t("form.theme")} placeholder={t("form.themePlaceholder")} options={themeOptions} />
     </DropdownMenu>
     <DropdownMenu title={t("form.priceReviewsSection")}>
       <>Children here</>

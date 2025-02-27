@@ -19,7 +19,7 @@ interface CustomLanguage extends ResourceLanguage {
     welcomePage: {
       title: string;
       subTitle: string;
-    }
+    };
 
     form: {
       searchAllInput: string;
@@ -34,6 +34,9 @@ interface CustomLanguage extends ResourceLanguage {
       genre: string;
       genrePlaceholder: string;
 
+      theme: string;
+      themePlaceholder: string;
+
       contentSection: string;
       priceReviewsSection: string;
 
@@ -41,7 +44,42 @@ interface CustomLanguage extends ResourceLanguage {
       searchFieldAriaLabel: string;
       resetButtonAriaLabel: string;
       searchModeToggle: ToggleResource;
-    }
+    };
+
+    bookGenre: {
+      novel: string;
+      shortStory: string;
+      poesy: string;
+      drama: string;
+      essay: string;
+      biography: string;
+      autobiography: string;
+      tale: string;
+      comic: string;
+      manga: string;
+      travelStory: string;
+      children: string;
+      other: string;
+    };
+
+    bookTheme: {
+      loveAndPassion: string;
+      friendshipAndHumanRelation: string;
+      questForIdentity: string;
+      goodAndEvil: string;
+      libertyAndOppression: string;
+      travelExploration: string;
+      warConsequences: string;
+      justiceInjustice: string;
+      fantasyAndSupernatural: string;
+      scienceProgressAndExcesses: string;
+      dreamImaginary: string;
+      timeMemory: string;
+      lonelinessIsolation: string;
+      famillyHeritage: string;
+      destinyFreewill: string;
+      other: string;
+    };
   };
 }
 
@@ -51,10 +89,10 @@ const resources: CustomResource = {
       loading: "Loading",
       pageNotFound: "Oops! This page doesn't exists.",
       pageNotFoundBack: "Go back to previous page",
-      
+
       welcomePage: {
-         title: "the online library",
-         subTitle: "Your favorite books in just a few clicks"
+        title: "the online library",
+        subTitle: "Your favorite books in just a few clicks"
       },
 
       form: {
@@ -69,6 +107,9 @@ const resources: CustomResource = {
 
         genre: "Genre",
         genrePlaceholder: "Select a genre",
+        
+        theme: "Theme",
+        themePlaceholder: "Select a theme",
 
         contentSection: "Content and classification",
         priceReviewsSection: "Price and reviews",
@@ -80,6 +121,41 @@ const resources: CustomResource = {
           false: "Advanced search",
           true: "Simple search"
         },
+      },
+
+      bookGenre: {
+        novel: "Novel",
+        shortStory: "Short Story",
+        poesy: "Poetry",
+        drama: "Drama",
+        essay: "Essay",
+        biography: "Biography",
+        autobiography: "Autobiography",
+        tale: "Fairy Tale",
+        comic: "Comic, Graphic Novel",
+        manga: "Manga",
+        travelStory: "Travel Narrative",
+        children: "Children's Literature",
+        other: "Other"
+      },
+
+      bookTheme: {
+        loveAndPassion: "Love and Passion (romance, relationships, desire)",
+        friendshipAndHumanRelation: "Friendship and Human Relations (loyalty, betrayal, brotherhood)",
+        questForIdentity: "The Quest for Identity (self-discovery, personal transformation)",
+        goodAndEvil: "Good and Evil (morality, ethical dilemmas)",
+        libertyAndOppression: "Liberty and Oppression (dictatorships, rebellions, quest for independence)",
+        travelExploration: "Travel and Exploration (discovery of new lands, exile)",
+        warConsequences: "War and Its Consequences (battles, trauma, resistance)",
+        justiceInjustice: "Justice and Injustice (trials, corruption, revenge)",
+        fantasyAndSupernatural: "Fantasy and the Supernatural (mythical creatures, magic, paranormal)",
+        scienceProgressAndExcesses: "Scientific Progress and Its Dangers (cyberpunk, AI, cloning)",
+        dreamImaginary: "Dreams and Imagination (dreamlike worlds, illusions, fiction within fiction)",
+        timeMemory: "Time and Memory (nostalgia, flashbacks, time loops)",
+        lonelinessIsolation: "Loneliness and Isolation (exile, marginality, solitary survival)",
+        famillyHeritage: "Family and Heritage (family relationships, family secrets)",
+        destinyFreewill: "Destiny and Free Will (fate, choices, predictions)",
+        other: "Other"
       }
     }
   },
@@ -109,6 +185,9 @@ const resources: CustomResource = {
 
         genre: "Genre",
         genrePlaceholder: "Sélectionnez un genre",
+        
+        theme: "Thème",
+        themePlaceholder: "Sélectionnez un thème",
 
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
@@ -117,6 +196,41 @@ const resources: CustomResource = {
           false: "Recherche avancée",
           true: "Recherche simple"
         }
+      },
+
+      bookGenre: {
+        novel: "Roman",
+        shortStory: "Nouvelle",
+        poesy: "Poésie",
+        drama: "Théâtre",
+        essay: "Essai",
+        biography: "Biographie",
+        autobiography: "Autobiographie",
+        tale: "Conte",
+        comic: "Bande dessiné, comics",
+        manga: "Manga",
+        travelStory: "Récit de voyage",
+        children: "Littérature jeuneusse",
+        other: "Autre",
+      },
+
+      bookTheme: {
+        loveAndPassion: "L'amour et la passion (romance, relations, désir)",
+        friendshipAndHumanRelation: "L'amitié et les relations humaines (loyauté, trahison, fraternité)",
+        questForIdentity: "La quête d’identité (découverte de soi, transformation personnelle)",
+        goodAndEvil: "Le bien et le mal (moralité, dilemmes éthiques)",
+        libertyAndOppression: "La liberté et l’oppression (dictatures, rébellions, quête d’indépendance)",
+        travelExploration: "Le voyage et l’exploration (découverte de nouvelles terres, exil)",
+        warConsequences: "La guerre et ses conséquences (batailles, traumatismes, résistances)",
+        justiceInjustice: "La justice et l’injustice (procès, corruption, vengeance)",
+        fantasyAndSupernatural: "Le fantastique et le surnaturel (créatures mythiques, magie, paranormal)",
+        scienceProgressAndExcesses: "Le progrès scientifique et ses dérives (cyberpunk, IA, clonage)",
+        dreamImaginary: "Le rêve et l’imaginaire (mondes oniriques, illusions, fictions dans la fiction)",
+        timeMemory: "Le temps et la mémoire (nostalgie, flashbacks, boucle temporelle)",
+        lonelinessIsolation: "La solitude et l’isolement (exil, marginalité, survie en solitaire)",
+        famillyHeritage: "La famille et l’héritage (relations familiales, secrets de famille)",
+        destinyFreewill: "Le destin et le libre arbitre (fatalité, choix, prédictions)",
+        other: "Autre"
       }
     }
   }

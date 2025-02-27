@@ -141,12 +141,15 @@
     z-index: 5;
     top: 100%;
     left: 0;
+    max-height: 300px;
+    overflow: auto;
 
     .ebr_dropdown-remove-icon {
       color: var(--font-accent-red);
     }
 
     button {
+      text-align: start;
       width: 100%;
 
       &[aria-selected="true"] {

@@ -55,6 +55,39 @@
   }
 }
 
+.ebr_dropdown-search-field {
+  position: relative;
+  display: flex;
+  padding: 8px;
+
+  & > input {
+    flex-grow: 1;
+    padding: 8px;
+    font: inherit;
+    font-size: 0.875rem;
+    border-radius: 2px;
+    color: var(--font-secondary);
+    background: var(--bg-quaternary);
+    border: none;
+    outline: none;
+    transition: background-color ease-in-out 0.3s;
+
+    &:focus {
+      background: var(--bg-tertiary-faded);
+    }
+
+    &::placeholder {
+      color: var(--font-secondary-faded);
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 35%;
+    right: 6%;
+  }
+}
+
 .ebr_form {
   display: flex;
   flex-direction: column;
@@ -124,6 +157,7 @@
 }
 
 .ebr_dropdown-control {
+  box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.3);
   position: relative;
   background: var(--bg-secondary);
 
@@ -141,6 +175,7 @@
   }
 
   > .ebr_dropdown-content {
+    box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.3);
     background: var(--bg-secondary);
     padding: 0;
     position: absolute;

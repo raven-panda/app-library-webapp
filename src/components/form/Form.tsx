@@ -5,6 +5,8 @@ export default function EbrForm({ children, className, defaultData, onSubmit, ..
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
 
+    formData.delete("searchField");
+
     const dataObject: Record<string, any> = defaultData ?? {};
     formData.forEach((value, key) => dataObject[key] = processValue(value));
     onSubmit(dataObject);

@@ -26,6 +26,7 @@ interface CustomLanguage extends ResourceLanguage {
       searchAllInput: string;
       delete: string;
       noValueAvailable: string;
+      searchValue: string;
 
       author: string;
       title: string;
@@ -119,6 +120,7 @@ const resources: CustomResource = {
         searchAllInput: "Search a book title, an author, an editor, etc.",
         delete: "Delete",
         noValueAvailable: "No value available",
+        searchValue: "Search a value",
 
         author: "Search an author",
         title: "Search a title",
@@ -213,6 +215,7 @@ const resources: CustomResource = {
         searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc.",
         delete: "Supprimer",
         noValueAvailable: "Aucune valeur disponible",
+        searchValue: "Rechercher une valeur",
 
         author: "Rechercher un auteur",
         title: "Rechercher un titre",

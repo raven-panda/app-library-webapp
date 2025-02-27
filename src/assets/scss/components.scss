@@ -10,6 +10,47 @@
 }
 
 .ebr_input {
+  border-radius: 8px;
+  width: 100%;
+  transition: background-color ease-in-out 0.3s;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  button {
+    color: var(--font-secondary);
+    border-radius: 100%;
+    padding: 6px;
+    z-index: 3;
+  }
+
+  & > input {
+    background-color: var(--bg-secondary-faded);
+    box-sizing: border-box;
+    padding: 10px;
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--font-secondary);
+    border: none;
+    outline: none;
+    width: 100%;
+    border-radius: 6px;
+    transition: background-color ease-in-out 0.3s;
+
+    &:focus {
+      background: var(--bg-tertiary-faded);
+    }
+
+    &::placeholder {
+      color: var(--font-secondary-faded);
+    }
+  }
+}
+
+.ebr_input-with-icon {
   position: relative;
   display: flex;
   background-color: var(--bg-secondary-faded);
@@ -88,6 +129,11 @@
   }
 }
 
+.ebr_input-error {
+  margin: 0;
+  color: var(--font-accent-red);
+}
+
 .ebr_form {
   display: flex;
   flex-direction: column;
@@ -98,7 +144,7 @@
 .ebr_button {
   padding: 4px;
   border-radius: 8px;
-  transition: color ease-in-out 0.1s, background-color ease-in-out 0.1s;
+  transition: color ease-in-out 0.1s, background-color ease-in-out 0.3s;
   &:hover, &:focus-visible {
     background: rgba(0, 0, 0, 0.1);
     color: var(--font-secondary-hover);
@@ -107,6 +153,7 @@
 
 .ebr_dropdown-control, .ebr_dropdown-menu {
   background: var(--bg-secondary-faded2);
+  transition: background-color ease-in-out 0.2s;
   border-radius: 8px;
 
   > .ebr_dropdown-title-button {
@@ -117,6 +164,7 @@
     justify-content: space-between;
     margin: 0;
     padding: 16px;
+    transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
 
     &:hover, &:focus-visible {
       background: rgba(0, 0, 0, 0.1);

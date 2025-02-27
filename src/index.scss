@@ -65,3 +65,11 @@ button {
     display: block;
   }
 }
+
+.Toastify__toast p:first-child {
+  margin-top: 0;
+}
+
+.Toastify__toast p:last-child {
+  margin-bottom: 0;
+}

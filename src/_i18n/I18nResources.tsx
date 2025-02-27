@@ -16,6 +16,10 @@ interface CustomLanguage extends ResourceLanguage {
     loading: string;
     pageNotFound: string;
     pageNotFoundBack: string;
+    invalidForm: string;
+
+    thisFieldIsRequired: string;
+    thisFieldIsInvalid: string;
 
     welcomePage: {
       title: string;
@@ -45,14 +49,22 @@ interface CustomLanguage extends ResourceLanguage {
       language: string;
       languagePlaceholder: string;
 
+      minReviewsNumber: string;
+      numberPlaceholder: string;
+
       contentSection: string;
       priceReviewsSection: string;
 
       searchButtonAriaLabel: string;
       searchFieldAriaLabel: string;
       resetButtonAriaLabel: string;
+      inputAriaLabel: string;
       searchModeToggle: ToggleResource;
     };
+
+    assertions: {
+      atLeastOneValueSet: string;
+    }
 
     bookGenre: {
       novel: string;
@@ -110,6 +122,10 @@ const resources: CustomResource = {
       loading: "Loading",
       pageNotFound: "Oops! This page doesn't exists.",
       pageNotFoundBack: "Go back to previous page",
+      invalidForm: "Error(s) found in the form.",
+
+      thisFieldIsRequired: "This field is required",
+      thisFieldIsInvalid: "This field is invalid",
 
       welcomePage: {
         title: "the online library",
@@ -135,7 +151,10 @@ const resources: CustomResource = {
 
         targetAudience: "Target public",
         targetAudiencePlaceholder: "Select a target public",
-        
+
+        minReviewsNumber: "Minimum reviews amount",
+        numberPlaceholder: "Enter a number",
+
         language: "Language",
         languagePlaceholder: "Select a language",
 
@@ -145,10 +164,15 @@ const resources: CustomResource = {
         searchButtonAriaLabel: "Search button",
         searchFieldAriaLabel: "Field input for text to search",
         resetButtonAriaLabel: "Reset text field",
+        inputAriaLabel: "Enter a value here",
         searchModeToggle: {
           false: "Advanced search",
           true: "Simple search"
         },
+      },
+
+      assertions: {
+        atLeastOneValueSet: "At least one value must be set",
       },
 
       bookGenre: {
@@ -205,6 +229,10 @@ const resources: CustomResource = {
       loading: "Chargement",
       pageNotFound: "Oops! Cette page n'existe pas.",
       pageNotFoundBack: "Revenir en arrière",
+      invalidForm: "Il y a une/des erreur(s) dans le formulaire.",
+
+      thisFieldIsRequired: "Ce champ est requis",
+      thisFieldIsInvalid: "Ce champ est invalide",
 
       welcomePage: {
         title: "la bibliothèque en ligne",
@@ -234,16 +262,24 @@ const resources: CustomResource = {
         targetAudience: "Public cible",
         targetAudiencePlaceholder: "Sélectionnez un public cible",
 
+        minReviewsNumber: "Nombre d’avis minimum",
+        numberPlaceholder: "Entrez un nombre",
+
         language: "Langue",
         languagePlaceholder: "Sélectionnez une langue",
 
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
         resetButtonAriaLabel: "Effacer le texte du champ",
+        inputAriaLabel: "Entrez une valeur",
         searchModeToggle: {
           false: "Recherche avancée",
           true: "Recherche simple"
         },
+      },
+
+      assertions: {
+        atLeastOneValueSet: "Au moins une valeur doit être completée",
       },
 
       bookGenre: {

@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { ChevronDown, Search, X } from "react-feather";
 import { SelectOption } from "../../types/controls/SelectOption";
 import { useTranslation } from "react-i18next";
 
-export default function Dropdown({ name, placeholder, label, options, isDefaultExpanded = false }: { name: string; placeholder: string; label: string; options: SelectOption[]; isDefaultExpanded?: boolean; }) {
+export default function Dropdown({ setFieldValue, name, placeholder, label, options, error, isDefaultExpanded = false }: { setFieldValue: (value: string | number | boolean | number[]) => void; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; }) {
   const {t} = useTranslation();
   
   const [isExpanded, setExpanded] = useState(isDefaultExpanded);
@@ -16,6 +16,7 @@ export default function Dropdown({ name, placeholder, label, options, isDefaultE
     setValue(value);
     setExpanded(false);
     setSearchInput("");
+    setFieldValue(value);
   };
 
   const getSelectPlaceholder = () => options.find(opt => opt.id === value)?.label ?? placeholder;
@@ -51,5 +52,6 @@ export default function Dropdown({ name, placeholder, label, options, isDefaultE
       </div>
       <input key={`value${value}`} name={name} type="text" value={value} readOnly hidden />
     </div>
+    {error && <p className="ebr_input-error">{error}</p>}
   </div>;
 }

@@ -1,4 +1,5 @@
 import { Resource, ResourceLanguage } from "i18next";
+import { localesEnUs, localesFrFr } from "./I18nLocalesResources";
 
 interface ToggleResource {
   false: string;
@@ -39,6 +40,9 @@ interface CustomLanguage extends ResourceLanguage {
 
       targetAudience: string;
       targetAudiencePlaceholder: string;
+
+      language: string;
+      languagePlaceholder: string;
 
       contentSection: string;
       priceReviewsSection: string;
@@ -94,6 +98,8 @@ interface CustomLanguage extends ResourceLanguage {
       peopleWithReadingDifficulties: string;
       other: string;
     };
+
+    locales: Record<string, string>;
   };
 }
 
@@ -127,6 +133,9 @@ const resources: CustomResource = {
 
         targetAudience: "Target public",
         targetAudiencePlaceholder: "Select a target public",
+        
+        language: "Language",
+        languagePlaceholder: "Select a language",
 
         contentSection: "Content and classification",
         priceReviewsSection: "Price and reviews",
@@ -184,7 +193,9 @@ const resources: CustomResource = {
         visuallyImpaired: "Books for visually impaired (braille books, adapted e-books, etc.)",
         peopleWithReadingDifficulties: "People with reading difficulties (simplified books, large print books, etc.)",
         other: "Other"
-      }      
+      },
+
+      locales: localesEnUs
     }
   },
   fr: {
@@ -213,12 +224,15 @@ const resources: CustomResource = {
 
         genre: "Genre",
         genrePlaceholder: "Sélectionnez un genre",
-        
+
         theme: "Thème",
         themePlaceholder: "Sélectionnez un thème",
 
         targetAudience: "Public cible",
         targetAudiencePlaceholder: "Sélectionnez un public cible",
+
+        language: "Langue",
+        languagePlaceholder: "Sélectionnez une langue",
 
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",
@@ -226,7 +240,7 @@ const resources: CustomResource = {
         searchModeToggle: {
           false: "Recherche avancée",
           true: "Recherche simple"
-        }
+        },
       },
 
       bookGenre: {
@@ -273,7 +287,9 @@ const resources: CustomResource = {
         visuallyImpaired: "Livres pour malvoyants (livres en braille, e-books adaptés, etc.)",
         peopleWithReadingDifficulties: "Personnes ayant des difficultés de lecture (livres simplifiés, livres en grands caractères, etc.)",
         other: "Autre"
-      }
+      },
+
+      locales: localesFrFr
     }
   }
 };

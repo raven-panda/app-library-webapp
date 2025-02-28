@@ -8,12 +8,12 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels } from "../../types/enums/AssertionEnum";
 
-export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton, ...props }: {defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: any) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton: ReactNode; } & FormHTMLAttributes<HTMLFormElement>) {
+export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton, ...props }: {defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton: ReactNode; } & FormHTMLAttributes<HTMLFormElement>) {
   const {t} = useTranslation();
   const [formData, setFormData] = useState<Record<string, string|number|boolean|number[]|undefined>>(defaultData ?? {});
   const [globalErrors, setGlobalErrors] = useState<string[]>();
   const [errors, setErrors] = useState<{fieldName: string; message: string;}[]>();
-  
+
   const buildForm = (errors?: {fieldName: string; message: string;}[]): ReactNode => {
     if (!formMatrix)
       return formBuilder.map(f => processField(f, errors?.find(e => e.fieldName === f.name)?.message));
@@ -56,9 +56,9 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
       return <FieldInput setFieldValue={setFieldValue} key={field.name} placeholder={field.placeholder ?? ""} label={field.label} name={field.name} type={field.type} error={error} />;
     }
   };
-  
+
   const _onSubmit = (e: FormEvent) => {
-    e.preventDefault();    
+    e.preventDefault();
     const validationData = validateForm();
 
     if (validationData.valid) {
@@ -94,7 +94,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
         invalidGlobalAssertions: invalidGlobalAssertions.map(assertion => t(FormGlobalAssertionLabels[assertion]))
       };
     }
-      
+
     const requiredFields = formBuilder.filter(field => field.required);
     const fieldsWithAssertions = formBuilder.filter(field => field.assertion);
 
@@ -152,7 +152,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
         return true;
     }
   };
-  
+
   return <form {...props} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
     {globalErrors && <p className="ebr_input-error">{globalErrors.join(", ")}</p>}
     {buildForm(errors)}

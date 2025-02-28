@@ -1,62 +1,45 @@
-import { TFunction } from "i18next";
-import { useState } from "react";
-import { Rewind, Search, Sliders } from "react-feather";
-import { useTranslation } from "react-i18next";
+import {Search, Sliders} from "react-feather";
+import {useTranslation} from "react-i18next";
 import Button from "../../components/form/Button";
 import EbrForm from "../../components/form/Form";
-import { getSearchFormBuilderAndMatrix } from "../../components/welcome-page/SearchFormBuilder";
 import "./style.scss";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
-  const [isFormAdvancedMode, setFormAdvancedMode] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: Record<string, any>) => {
     const searchParams = buildSearchParams(formData);
     navigate("/browse" + searchParams);
   };
 
-  const buildSearchParams = (formData: any) => {
-    return "?" + Object.entries(formData).map(([k, v]) => k + "=" + JSON.stringify(v)).join("&");
+  const buildSearchParams = (formData: Record<string, any>) => {
+    return "?" + Object.entries(formData).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
   };
 
   return <>
-    <header className="ebr_welcome-header" data-advanced={isFormAdvancedMode}>
+    <header className="ebr_welcome-header">
       <h1><span className="font-accent-blue">E.</span>brary, {t("welcomePage.title")}</h1>
       <h2>{t("welcomePage.subTitle")}</h2>
 
-      <Button id="form-advanced-mode-toggle" onClick={() => setFormAdvancedMode(prev => !prev)}><div className="ebr_icon">{isFormAdvancedMode ? <Rewind /> : <Sliders />}</div> {t(`form.searchModeToggle.${isFormAdvancedMode.toString()}`)}</Button>
-      {isFormAdvancedMode ?
-        <AdvancedSearchForm t={t} onSubmit={onSubmit} /> :
-        <EbrForm
-          onSubmit={onSubmit}
-          formBuilder={[
-            {
-              name: "searchAll",
-              type: "iconinput",
-              placeholder: t("form.searchAllInput"),
-              icon: <Search size={24}/>,
-              isIconButtonSubmit: true,
-              required: true
-            }
-          ]}
-          submitButton={<></>}
-        />
-      }
+      <Button id="form-advanced-search-btn" onClick={() => navigate("/browse")}>
+        <Sliders /> {t("form.advancedSearch")}
+      </Button>
+      <EbrForm
+        onSubmit={onSubmit}
+        formBuilder={[
+          {
+            name: "searchAll",
+            type: "iconinput",
+            placeholder: t("form.searchAllInput"),
+            icon: <Search size={24}/>,
+            isIconButtonSubmit: true,
+            required: true
+          }
+        ]}
+        submitButton={<></>}
+      />
     </header>
   </>;
 }
-
-function AdvancedSearchForm({t, onSubmit}: {t: TFunction<"translation", undefined>; onSubmit: ((data: any) => void)}) {
-  const {formBuilder, formMatrix, globalAssertions} = getSearchFormBuilderAndMatrix(t);
-  return <EbrForm
-    onSubmit={onSubmit}
-    formBuilder={formBuilder}
-    formMatrix={formMatrix}
-    assertions={globalAssertions}
-    submitButton={<Button variant="filled" size="lg"><Search /> {t("form.search")}</Button>}
-  />;
-}
-

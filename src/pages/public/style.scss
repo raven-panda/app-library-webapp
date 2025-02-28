@@ -1,15 +1,10 @@
 @use "../../assets/scss/variable";
 @use "../../assets/scss/mixins" as *;
 
-.ebr_button#form-advanced-mode-toggle {
+.ebr_button#form-advanced-search-btn {
   margin-top: 40px;
   margin-bottom: 8px;
   align-self: flex-start;
-
-  .ebr_icon {
-    transform: rotate(0deg);
-    transition: transform ease-out 0.3s;
-  }
 }
 
 .ebr_welcome-header {
@@ -22,16 +17,6 @@
   padding: 60px 480px;
   height: 402px;
   transition: height ease-in-out 0.5s;
-
-  &[data-advanced="true"] {
-    height: 800px;
-
-    .ebr_button#form-advanced-mode-toggle {
-      .ebr_icon {
-        transform: rotate(360deg + 180deg);
-      }
-    }
-  }
 
   h1 {
     font-size: 3.5rem;

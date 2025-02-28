@@ -1,10 +1,10 @@
-import { Resource, ResourceLanguage } from "i18next";
-import { localesEnUs, localesFrFr } from "./I18nLocalesResources";
+import {Resource, ResourceLanguage} from "i18next";
+import {localesEnUs, localesFrFr} from "./I18nLocalesResources";
 
-interface ToggleResource {
+/*interface ToggleResource {
   false: string;
   true: string;
-}
+}*/
 
 // Recreating more type specified interface for language to make sure that all language props are present in each resource
 interface CustomResource extends Resource {
@@ -36,7 +36,7 @@ interface CustomLanguage extends ResourceLanguage {
       title: string;
       editor: string;
       isbn: string;
-      
+
       genre: string;
       genrePlaceholder: string;
 
@@ -59,7 +59,7 @@ interface CustomLanguage extends ResourceLanguage {
       searchFieldAriaLabel: string;
       resetButtonAriaLabel: string;
       inputAriaLabel: string;
-      searchModeToggle: ToggleResource;
+      advancedSearch: string;
 
       submit: string;
       search: string;
@@ -68,7 +68,7 @@ interface CustomLanguage extends ResourceLanguage {
     assertions: {
       atLeastOneValueSet: string;
       atLeastOneValueSpecifiedSet: string;
-      
+
       numberNotZero: string;
     }
 
@@ -171,10 +171,7 @@ const resources: CustomResource = {
         searchFieldAriaLabel: "Field input for text to search",
         resetButtonAriaLabel: "Reset text field",
         inputAriaLabel: "Enter a value here",
-        searchModeToggle: {
-          false: "Advanced search",
-          true: "Simple search"
-        },
+        advancedSearch: "Advanced search",
 
         submit: "Submit",
         search: "Search"
@@ -221,7 +218,7 @@ const resources: CustomResource = {
         destinyFreewill: "Destiny and Free Will (fate, choices, predictions)",
         other: "Other"
       },
-      
+
       bookTargetAudience: {
         academic: "Academic readers (textbooks, reference books, etc.)",
         entertainment: "Entertainment literature (light books, comedies, etc.)",
@@ -284,10 +281,7 @@ const resources: CustomResource = {
         searchFieldAriaLabel: "Champ de recherche",
         resetButtonAriaLabel: "Effacer le texte du champ",
         inputAriaLabel: "Entrez une valeur",
-        searchModeToggle: {
-          false: "Recherche avancée",
-          true: "Recherche simple"
-        },
+        advancedSearch: "Recherche avancée",
         submit: "Envoyer",
         search: "Rechercher"
       },

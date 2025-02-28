@@ -1,4 +1,4 @@
-import { FormEvent, FormHTMLAttributes, ReactNode, useEffect, useState } from "react";
+import { FormEvent, FormHTMLAttributes, ReactNode, useState } from "react";
 import { FormBuilder, FormBuilderItem } from "../../types/interfaces/FormBuilder";
 import { FormMatrix, FormMatrixItem } from "../../types/interfaces/FormMatrix";
 import DropdownMenu from "../DropdownMenu";
@@ -84,10 +84,6 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
       toast.error(t("invalidForm"));
     }
   };
-
-  useEffect(() => {
-    console.log({formData});
-  }, [formData]);
 
   const validateForm = (): { valid: boolean; invalidGlobalAssertions?: string[]; invalidFields?: { name: string; label?: ReactNode|string; message: string; }[]; } => {
     const invalidGlobalAssertions = assertions?.filter(assertion => !validateGlobalAssertions(assertion)) ?? [];

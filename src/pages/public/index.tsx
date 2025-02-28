@@ -6,13 +6,20 @@ import Button from "../../components/form/Button";
 import EbrForm from "../../components/form/Form";
 import { getSearchFormBuilderAndMatrix } from "../../components/welcome-page/SearchFormBuilder";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function WelcomePage() {
   const {t} = useTranslation();
-  const [isFormAdvancedMode, setFormAdvancedMode] = useState(true);
+  const [isFormAdvancedMode, setFormAdvancedMode] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = (value: any) => {
-    console.log({value});
+  const onSubmit = (formData: any) => {
+    const searchParams = buildSearchParams(formData);
+    navigate("/browse" + searchParams);
+  };
+
+  const buildSearchParams = (formData: any) => {
+    return "?" + Object.entries(formData).map(([k, v]) => k + "=" + JSON.stringify(v)).join("&");
   };
 
   return <>

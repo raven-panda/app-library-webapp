@@ -3,10 +3,11 @@ import { BookFormatType } from "./enums/book/BookFormatEnum";
 import { BookGenreType } from "./enums/book/BookGenreEnum";
 import { BookThemeType } from "./enums/book/BookThemeEnum";
 import { LanguageCode } from "iso-639-1";
+import { TargetAudienceType } from "./enums/TargetAudienceEnum";
 
 export interface IBooks {
   id?: number;
-  isbin: string;
+  isbn: string;
   title: string;
   author: IAuthor;
   /** @url */
@@ -18,6 +19,7 @@ export interface IBooks {
   format: BookFormatType;
   isPhysicalFormat: boolean;
   languageCode: LanguageCode;
+  targetAudience: TargetAudienceType;
   reviews: number;
   averageRate: number;
   isForRent: boolean;

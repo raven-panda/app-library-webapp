@@ -13,6 +13,7 @@ export interface FormBuilderItem {
   placeholder?: string;
   label?: ReactNode|string;
   icon?: ReactNode;
+  iconButtonType?: "submit" | "reset" | "button" | "disabled";
   isIconButtonSubmit?: boolean;
   rangeMin?: number;
   rangeMax?: number;

@@ -183,6 +183,14 @@
   }
 }
 
+.ebr_dropdown-language {
+  border: none;
+
+  .ebr_dropdown-title-button {
+    color: var(--font-secondary)
+  }
+}
+
 .ebr_dropdown-search-field {
   position: relative;
   display: flex;

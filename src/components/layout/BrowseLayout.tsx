@@ -3,10 +3,12 @@ import EbraryIcon from "../icon/EbraryIcon.tsx";
 import Button from "../form/Button.tsx";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {ChevronLeft, Search} from "react-feather";
+import {ChevronLeft, Moon, Search, Sun} from "react-feather";
 import EbrForm from "../form/EbrForm.tsx";
 import getBrowseFormBuilder from "../../form/BrowseFormBuilder.tsx";
 import UrlTransformer from "../../service/UrlTransformer.ts";
+import LanguageDropdown from "../form/LanguageDropdown.tsx";
+import {useTheme} from "../../hook/Theme.tsx";
 
 export default function BrowseLayout({ children }: { children: ReactNode }) {
     const {t} = useTranslation();
@@ -14,6 +16,7 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const asideRef = useRef<HTMLElement>(null);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [theme, setTheme] = useTheme();
 
     const { formBuilder, formMatrix, globalAssertions } = getBrowseFormBuilder(t);
 
@@ -34,8 +37,31 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
 
     return <div className="ebr_layout">
         <header className="ebr_header">
-            <div>
+            <div className="ebr_header-left">
                 <Button onClick={() => navigate("/")}><EbraryIcon /></Button>
+                <EbrForm onSubmit={(data) => setSearchParams(prev => {
+                    const value = data["searchAll"];
+                    if (value)
+                        prev.set("searchAll", data["searchAll"]);
+                    else
+                        prev.delete("searchAll");
+
+                    return prev;
+                })} formBuilder={[
+                    {
+                        name: "searchAll",
+                        type: "text",
+                        placeholder: t("form.searchAllInput"),
+                        icon: <Search size={"1.3rem"}/>,
+                        iconButtonType: "submit",
+                        isIconButtonSubmit: true,
+                        required: true,
+                    }
+                ]} submitButton={<></>} />
+            </div>
+            <div className="ebr_header-right">
+                <Button className="ebr_theme-switch" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{theme === "light" ? <Moon /> : <Sun />}</Button>
+                <LanguageDropdown />
             </div>
         </header>
         <section className="ebr_layout-content">

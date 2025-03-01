@@ -2,14 +2,45 @@
   position: relative;
 
   > header {
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     padding: 16px;
     box-sizing: border-box;
+    justify-content: space-between;
 
     background-image: var(--bg-header);
+
+    .ebr_header-left, .ebr_header-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .ebr_header-left {
+      gap: 32px;
+      flex: 1;
+      .ebr_input {
+        label {
+          margin: 0;
+        }
+        input {
+          background-color: var(--bg-primary);
+          border: none;
+          border-radius: 32px;
+          width: 30%;
+          padding-left: 2.2rem;
+        }
+        .ebr_input-icon {
+          top: calc(50% - 1rem);
+        }
+      }
+    }
+
+    .ebr_header-right .ebr_theme-switch {
+      color: var(--font-secondary);
+    }
   }
 
   > .ebr_layout-content {
@@ -21,7 +52,7 @@
       box-sizing: border-box;
       padding: 0 16px 0 32px;
       width: 300px;
-      box-shadow: 0px 4px 42px 0 rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 42px 0 rgba(0, 0, 0, 0.25);
       transition: margin-left ease-in-out 0.2s;
 
       > h1 {

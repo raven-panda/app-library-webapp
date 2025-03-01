@@ -134,7 +134,7 @@ interface CustomLanguage extends ResourceLanguage {
 }
 
 const resources: CustomResource = {
-  en: {
+  "en-US": {
     translation: {
       loading: "Loading",
       pageNotFound: "Oops! This page doesn't exists.",
@@ -255,7 +255,7 @@ const resources: CustomResource = {
       locales: localesEnUs,
     }
   },
-  fr: {
+  "fr-FR": {
     translation: {
       loading: "Chargement",
       pageNotFound: "Oops! Cette page n'existe pas.",
@@ -378,3 +378,4 @@ const resources: CustomResource = {
 };
 
 export default resources;
+export const SUPPORTED_LANGUAGES = Object.keys(resources);

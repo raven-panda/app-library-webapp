@@ -1,4 +1,4 @@
-import {Search, Sliders} from "react-feather";
+import {Moon, Search, Sliders, Sun} from "react-feather";
 import {useTranslation} from "react-i18next";
 import Button from "../../components/form/Button";
 import EbrForm from "../../components/form/EbrForm.tsx";
@@ -6,6 +6,8 @@ import "./style.scss";
 import {useNavigate} from "react-router-dom";
 import {ReactNode} from "react";
 import EbraryIcon from "../../components/icon/EbraryIcon.tsx";
+import LanguageDropdown from "../../components/form/LanguageDropdown.tsx";
+import {useTheme} from "../../hook/Theme.tsx";
 
 function WelcomePage() {
   const {t} = useTranslation();
@@ -48,9 +50,17 @@ function WelcomePage() {
 }
 
 WelcomePage.Layout = function MainLayout({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useTheme();
+
   return <div className="ebr_layout">
     <header className="ebr_header">
-      <EbraryIcon />
+      <div className="ebr_header-left">
+        <Button><EbraryIcon /></Button>
+      </div>
+      <div className="ebr_header-right">
+        <Button className="ebr_theme-switch" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{theme === "light" ? <Moon /> : <Sun />}</Button>
+        <LanguageDropdown />
+      </div>
     </header>
     <main>
       {children}

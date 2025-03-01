@@ -12,10 +12,10 @@ export default function I18nextInit() {
     // (tip move them in a JSON file and import them,
     // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
     resources,
-    fallbackLng: "en",
+    fallbackLng: "en-US",
     detection: {
-      order: ["localStorage", "navigator", "sessionStorage", "cookie"],
-      caches: ["localStorage", "cookie"],
+      order: ["localStorage", "navigator", "sessionStorage"],
+      caches: ["localStorage"],
     },
     interpolation: {
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape

@@ -7,6 +7,7 @@ export interface FormBuilderItem {
   type: HTMLInputTypeAttribute|"iconinput"|"dropdown";
   required: boolean;
   oneOfRequired?: boolean;
+  submitOnChange?: boolean;
   assertion?: AssertionType;
   placeholder?: string;
   label?: ReactNode|string;
@@ -15,6 +16,6 @@ export interface FormBuilderItem {
   rangeMin?: number;
   rangeMax?: number;
   dropdownOptions?: SelectOption[];
-};
+}
 
 export type FormBuilder = FormBuilderItem[];

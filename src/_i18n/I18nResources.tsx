@@ -32,6 +32,8 @@ interface CustomLanguage extends ResourceLanguage {
       noValueAvailable: string;
       searchValue: string;
 
+      browseGeneral: string;
+
       author: string;
       title: string;
       editor: string;
@@ -51,6 +53,10 @@ interface CustomLanguage extends ResourceLanguage {
 
       minReviewsNumber: string;
       numberPlaceholder: string;
+
+      priceRange: string,
+
+      reviewsNumberRange: string;
 
       contentSection: string;
       priceReviewsSection: string;
@@ -148,6 +154,8 @@ const resources: CustomResource = {
         noValueAvailable: "No value available",
         searchValue: "Search a value",
 
+        browseGeneral: "General informations",
+
         author: "Search an author",
         title: "Search a title",
         editor: "Search an editor",
@@ -170,6 +178,10 @@ const resources: CustomResource = {
 
         contentSection: "Content and classification",
         priceReviewsSection: "Price and reviews",
+
+        priceRange: "Price range",
+
+        reviewsNumberRange: "Review range",
 
         searchButtonAriaLabel: "Search button",
         searchFieldAriaLabel: "Field input for text to search",
@@ -262,6 +274,8 @@ const resources: CustomResource = {
         noValueAvailable: "Aucune valeur disponible",
         searchValue: "Rechercher une valeur",
 
+        browseGeneral: "Informations générales",
+
         author: "Rechercher un auteur",
         title: "Rechercher un titre",
         editor: "Rechercher un éditeur",
@@ -281,6 +295,10 @@ const resources: CustomResource = {
 
         minReviewsNumber: "Nombre d’avis minimum",
         numberPlaceholder: "Entrez un nombre",
+
+        priceRange: "Tranche de prix",
+
+        reviewsNumberRange: "Plage de note",
 
         language: "Langue",
         languagePlaceholder: "Sélectionnez une langue",

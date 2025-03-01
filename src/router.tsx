@@ -1,5 +1,5 @@
 import {lazy, ReactNode} from "react";
-import MainLayout from "./components/layout/MainLayout.tsx";
+import BrowseLayout from "./components/layout/BrowseLayout.tsx";
 
 /** Pages that doesn't need authentication */
 const publicPages = import.meta.glob("./pages/public/**/*.tsx");
@@ -15,6 +15,7 @@ const publicPages = import.meta.glob("./pages/public/**/*.tsx");
  */
 function filterRoutes(pages: Record<string, () => Promise<unknown>>, rootPath: string) {
   return Object.entries(pages)
+    .filter(([path]) => !path.split("/")[path.split("/").length - 1].startsWith("_"))
   .map(([path, component]) => {
     if (!path)
       throw new Error("No path supplied for page component.");
@@ -32,7 +33,7 @@ function filterRoutes(pages: Record<string, () => Promise<unknown>>, rootPath: s
       }),
       Layout: lazy(async () => {
         const module: any = await component();
-        const LayoutComponent = module.default?.Layout || MainLayout;
+        const LayoutComponent = module.default?.Layout || BrowseLayout;
         return { default: (props: { children: ReactNode }) => <LayoutComponent {...props} /> };
       }),
     };

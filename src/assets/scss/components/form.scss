@@ -50,22 +50,29 @@
 
 .ebr_input-with-icon {
   position: relative;
+  box-sizing: border-box;
   display: flex;
   background-color: var(--bg-secondary-faded);
-  padding: 13px;
-  border-radius: 32px;
+  padding: 10px;
+  border-radius: 8px;
   overflow: hidden;
   align-items: center;
   column-gap: 10px;
   width: 100%;
   transition: background-color ease-in-out 0.3s;
   justify-content: space-between;
+  font-size: 0.875rem;
 
   button {
     color: var(--font-secondary);
     border-radius: 100%;
     padding: 6px;
     z-index: 3;
+
+    > svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
   }
 
   & > input {
@@ -73,7 +80,8 @@
     top: 0;
     left: 0;
     position: absolute;
-    padding: 0 13px 0 55px;
+    box-sizing: border-box;
+    padding: 0 13px 0 40px;
     font: inherit;
     color: var(--font-secondary);
     background: none;
@@ -102,19 +110,71 @@
 .ebr_form {
   width: 100%;
 
+  .ebr_form-menu {
+    > *:not(:first-child) {
+      margin-top: 10px;
+    }
+    h2 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 16px 0 0;
+    }
+  }
+
   > :not(:last-child) {
     margin-bottom: 14px;
   }
 }
 
 .ebr_dropdown-control {
+  background: var(--bg-secondary-faded2);
+  transition: background-color ease-in-out 0.2s;
+  border-radius: 8px;
+
+  > .ebr_dropdown-title-button {
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 16px;
+    transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+
+    &:hover, &:focus-visible {
+      background: rgba(0, 0, 0, 0.1);
+      color: var(--font-secondary-hover);
+    }
+
+    svg {
+      transition: transform ease-in-out 0.1s;
+    }
+  }
+
+  > .ebr_dropdown-content {
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top: none;
+  }
+
+
+}
+
+.ebr_dropdown-control {
   box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.3);
   position: relative;
-  background: var(--bg-secondary);
 
   &[data-expanded="true"] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
+    > .ebr_dropdown-content {
+      display: block;
+    }
   }
 
   > .ebr_dropdown-title-button {
@@ -127,7 +187,7 @@
 
   > .ebr_dropdown-content {
     box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.3);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     padding: 0;
     position: absolute;
     z-index: 5;
@@ -172,18 +232,12 @@
     font: inherit;
     font-size: 0.875rem;
     border-radius: 2px;
-    color: var(--font-secondary);
-    background: var(--bg-quaternary);
     border: none;
     outline: none;
     transition: background-color ease-in-out 0.3s;
 
     &:focus {
       background: var(--bg-tertiary-faded);
-    }
-
-    &::placeholder {
-      color: var(--font-secondary-faded);
     }
   }
 

@@ -1,21 +1,22 @@
-import { FormEvent, FormHTMLAttributes, ReactNode, useState } from "react";
-import { FormBuilder, FormBuilderItem } from "../../types/interfaces/FormBuilder";
-import { FormMatrix, FormMatrixItem } from "../../types/interfaces/FormMatrix";
+import {FormEvent, ReactNode, useRef, useState} from "react";
+import {FormBuilder, FormBuilderItem} from "../../types/interfaces/FormBuilder";
+import {FormMatrix, FormMatrixItem} from "../../types/interfaces/FormMatrix";
 import DropdownMenu from "../DropdownMenu";
-import { FieldInput, IconInput, SliderInput } from "./Input";
+import {FieldInput, IconInput, SliderInput} from "./Input";
 import Dropdown from "./Dropdown";
-import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
-import { AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels } from "../../types/enums/AssertionEnum";
+import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
+import {AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels} from "../../types/enums/AssertionEnum";
 
-export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton, ...props }: {defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton: ReactNode; } & FormHTMLAttributes<HTMLFormElement>) {
+export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton }: {className?: string; defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton?: ReactNode|undefined; }) {
   const {t} = useTranslation();
   const [formData, setFormData] = useState<Record<string, string|number|boolean|number[]|undefined>>(defaultData ?? {});
   const [globalErrors, setGlobalErrors] = useState<string[]>();
   const [errors, setErrors] = useState<{fieldName: string; message: string;}[]>();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const buildForm = (errors?: {fieldName: string; message: string;}[]): ReactNode => {
-    if (!formMatrix)
+    if (!formMatrix || formMatrix.length === 0)
       return formBuilder.map(f => processField(f, errors?.find(e => e.fieldName === f.name)?.message));
 
     return formMatrix.map(row =>
@@ -27,9 +28,14 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
   };
 
   const processFormRow = (row: FormMatrixItem, children: ReactNode) => {
-    return row.isDropdownMenu ? <DropdownMenu key={row.fields.join("_")} title={row.dropdownMenuTitle ?? ""}>
+    return row.isDropdownMenu ? <DropdownMenu key={row.fields.join("_")} title={row.menuTitle ?? ""}>
       {children}
-    </DropdownMenu> : <div key={row.fields.join("_")} className="row">
+    </DropdownMenu> : !row.isDropdownMenu && row.menuTitle ?
+        <div key={row.fields.join("_")} className="ebr_form-menu">
+          <h2>{row.menuTitle}</h2>
+          {children}
+        </div>
+        : <div key={row.fields.join("_")} className="row">
       {children}
     </div>;
   };
@@ -51,7 +57,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     } else if (field.type === "dropdown") {
       if (!field.dropdownOptions)
         throw new Error("Please provide dropdown options for dropdown " + field.name);
-      return <Dropdown key={field.name} setFieldValue={setFieldValue} name={field.name} label={field.label ?? <></>} placeholder={field.placeholder ?? ""} options={field.dropdownOptions} error={error} />;
+      return <Dropdown key={field.name} submitCallback={/*field.submitOnChange ? formRef.current?.submit :*/ undefined } setFieldValue={setFieldValue} name={field.name} label={field.label ?? <></>} placeholder={field.placeholder ?? ""} options={field.dropdownOptions} error={error} />;
     } else {
       return <FieldInput setFieldValue={setFieldValue} key={field.name} placeholder={field.placeholder ?? ""} label={field.label} name={field.name} type={field.type} error={error} />;
     }
@@ -153,9 +159,9 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     }
   };
 
-  return <form {...props} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
+  return <form ref={formRef} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
     {globalErrors && <p className="ebr_input-error">{globalErrors.join(", ")}</p>}
     {buildForm(errors)}
-    {submitButton}
+    {submitButton ?? <button type="submit" style={{ display: "none" }}>Test</button>}
   </form>;
 }

@@ -38,7 +38,7 @@ export function FieldInput({ setFieldValue, placeholder, label = "", name, type,
     setValue(parsedValue);
     setFieldValue(parsedValue);
   };
-  
+
   return <div className="ebr_form-control ebr_input">
     <label htmlFor={name} aria-label={placeholder}>{label}</label>
     <input placeholder={placeholder} value={value} onChange={(e) => changeFieldValue(e.currentTarget.value)} aria-label={t("form.inputAriaLabel")} type={type ?? "text"} name={name} id={name} />
@@ -56,7 +56,7 @@ export function SliderInput({ setFieldValue, label, name, rangeMin, rangeMax, er
     setValues(prev => value ?? prev);
     setFieldValue(value);
   };
-  
+
   return <div className="ebr_form-control">
     {label && <label htmlFor={name}>{label}</label>}
     <Slider valueLabelDisplay="auto" onChange={(_e, newValues) => changeValue(newValues)} value={values} />

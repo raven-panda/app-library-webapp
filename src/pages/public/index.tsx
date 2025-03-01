@@ -1,7 +1,7 @@
 import {Search, Sliders} from "react-feather";
 import {useTranslation} from "react-i18next";
 import Button from "../../components/form/Button";
-import EbrForm from "../../components/form/Form";
+import EbrForm from "../../components/form/EbrForm.tsx";
 import "./style.scss";
 import {useNavigate} from "react-router-dom";
 import {ReactNode} from "react";
@@ -29,6 +29,7 @@ function WelcomePage() {
         <Sliders /> {t("form.advancedSearch")}
       </Button>
       <EbrForm
+        className="ebr_welcome-form"
         onSubmit={onSubmit}
         formBuilder={[
           {

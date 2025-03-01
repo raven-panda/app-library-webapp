@@ -5,7 +5,7 @@ export default function BrowsePage() {
   const { books } = useBrowseBooks();
 
   useEffect(() => {
-    console.log(books);
+    console.log({books});
   }, [books]);
 
   return <></>;

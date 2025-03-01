@@ -3,9 +3,9 @@ import { ChevronDown, Search, X } from "react-feather";
 import { SelectOption } from "../../types/controls/SelectOption";
 import { useTranslation } from "react-i18next";
 
-export default function Dropdown({ setFieldValue, name, placeholder, label, options, error, isDefaultExpanded = false }: { setFieldValue: (value: string | number | boolean | number[]) => void; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; }) {
+export default function Dropdown({ setFieldValue, name, placeholder, label, options, error, isDefaultExpanded = false, submitCallback }: { setFieldValue: (value: string | number | boolean | number[]) => void; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; submitCallback?: () => void; }) {
   const {t} = useTranslation();
-  
+
   const [isExpanded, setExpanded] = useState(isDefaultExpanded);
   const dropdownRef = useRef<HTMLDivElement|null>(null);
   const [value, setValue] = useState<string>("");
@@ -17,6 +17,9 @@ export default function Dropdown({ setFieldValue, name, placeholder, label, opti
     setExpanded(false);
     setSearchInput("");
     setFieldValue(value);
+
+    if (submitCallback)
+      submitCallback();
   };
 
   const getSelectPlaceholder = () => options.find(opt => opt.id === value)?.label ?? placeholder;
@@ -44,7 +47,7 @@ export default function Dropdown({ setFieldValue, name, placeholder, label, opti
           </label>
           <div className="ebr_dropdown-values">
             {options.filter(opt => opt.id === value).map(opt => <button key={`dpbtn${opt.id}`} aria-selected={value === opt.id} type="button" onClick={() => optionClickHandler(opt.id)} aria-label={opt.label}>{opt.label}</button>)}
-            {filteredOptions.filter(opt => !opt.hidden && opt.id !== value).map(opt => 
+            {filteredOptions.filter(opt => !opt.hidden && opt.id !== value).map(opt =>
               <button key={`dpbtn${opt.id}`} aria-selected={value === opt.id} type="button" onClick={() => optionClickHandler(opt.id)} aria-label={opt.label}>{opt.label}</button>
             )}
           </div>

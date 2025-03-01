@@ -19,16 +19,17 @@ export const useBooksGlobal = () => {
 
 export const useBrowseBooks = () => {
   const [searchParams] = useSearchParams();
-  const [books, setBooks] = useState<IBooks[]>([]);
+  const [books, setBooks] = useState<IBooks[]>();
 
   const search = useCallback(async () => {
-    if (isFixturesEnabled)
-      setBooks(await booksServiceMock.search(searchParams));
+    if (isFixturesEnabled) {
+      const results = await booksServiceMock.search(searchParams);
+      setBooks(results);
+    }
   }, [searchParams]);
 
   useEffect(() => {
-    if (isFixturesEnabled)
-      search();
+    search();
   }, [search]);
 
   return { books };

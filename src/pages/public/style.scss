@@ -29,3 +29,18 @@ div.row {
   width: 100%;
   gap: 10px;
 }
+
+.ebr_welcome-form .ebr_input-with-icon {
+  padding: 13px;
+  border-radius: 32px;
+  font-size: 1rem;
+
+  button > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  & > input {
+    padding-left: 55px;
+  }
+}

@@ -1,7 +1,7 @@
 export interface FormMatrixItem {
   fields: string[];
   isDropdownMenu?: boolean;
-  dropdownMenuTitle?: string;
+  menuTitle?: string;
 }
 
 export type FormMatrix = FormMatrixItem[];

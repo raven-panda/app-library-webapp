@@ -2,14 +2,19 @@ import {ReactNode, useEffect, useRef, useState} from "react";
 import EbraryIcon from "../icon/EbraryIcon.tsx";
 import Button from "../form/Button.tsx";
 import {useTranslation} from "react-i18next";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {ChevronLeft} from "react-feather";
+import EbrForm from "../form/EbrForm.tsx";
+import getBrowseFormBuilder from "../../form/BrowseFormBuilder.tsx";
 
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default function BrowseLayout({ children }: { children: ReactNode }) {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const asideRef = useRef<HTMLElement>(null);
+    const setSearchParams = useSearchParams()[1];
+
+    const { formBuilder, formMatrix } = getBrowseFormBuilder(t);
 
     useEffect(() => {
         if (!asideRef.current)
@@ -33,7 +38,17 @@ export default function MainLayout({ children }: { children: ReactNode }) {
                     </Button>
                 </h1>
                 <div inert={!isSidebarOpen}>
-                    
+                    <EbrForm
+                        className="ebr_layout-browse-form"
+                        onSubmit={(data) =>
+                            setSearchParams(prev => {
+                                Object.entries(data).map(([k, v]) => v.toString().length ? prev.set(k, v) : prev.delete(k));
+                                return prev;
+                            })
+                        }
+                        formBuilder={formBuilder}
+                        formMatrix={formMatrix}
+                    />
                 </div>
             </aside>
             <main>{children}</main>

@@ -118,6 +118,10 @@ interface CustomLanguage extends ResourceLanguage {
       other: string;
     };
 
+    layout: {
+      refineYourSearch: string;
+    };
+
     locales: Record<string, string>;
   };
 }
@@ -230,7 +234,11 @@ const resources: CustomResource = {
         other: "Other"
       },
 
-      locales: localesEnUs
+      layout: {
+        refineYourSearch: "Refine your search"
+      },
+
+      locales: localesEnUs,
     }
   },
   fr: {
@@ -337,6 +345,10 @@ const resources: CustomResource = {
         visuallyImpaired: "Livres pour malvoyants (livres en braille, e-books adaptés, etc.)",
         peopleWithReadingDifficulties: "Personnes ayant des difficultés de lecture (livres simplifiés, livres en grands caractères, etc.)",
         other: "Autre"
+      },
+
+      layout: {
+        refineYourSearch: "Affiner votre recherche"
       },
 
       locales: localesFrFr

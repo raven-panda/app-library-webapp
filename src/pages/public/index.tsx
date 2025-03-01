@@ -4,8 +4,10 @@ import Button from "../../components/form/Button";
 import EbrForm from "../../components/form/Form";
 import "./style.scss";
 import {useNavigate} from "react-router-dom";
+import {ReactNode} from "react";
+import EbraryIcon from "../../components/icon/EbraryIcon.tsx";
 
-export default function WelcomePage() {
+function WelcomePage() {
   const {t} = useTranslation();
   const navigate = useNavigate();
 
@@ -43,3 +45,16 @@ export default function WelcomePage() {
     </header>
   </>;
 }
+
+WelcomePage.Layout = function MainLayout({ children }: { children: ReactNode }) {
+  return <div className="ebr_layout">
+    <header className="ebr_header">
+      <EbraryIcon />
+    </header>
+    <main>
+      {children}
+    </main>
+  </div>;
+};
+
+export default WelcomePage;

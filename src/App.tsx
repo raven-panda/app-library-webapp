@@ -15,8 +15,8 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Routes>
-          {PUBLIC_ROUTES.map(({ path, Component }) => (
-            <Route key={path} path={path} element={<Component />} />
+          {PUBLIC_ROUTES.map(({ path, Component, Layout }) => (
+              <Route key={path} path={path} element={<Layout><Component /></Layout>} />
           ))}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

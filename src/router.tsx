@@ -1,4 +1,5 @@
-import { lazy } from "react";
+import {lazy, ReactNode} from "react";
+import MainLayout from "./components/layout/MainLayout.tsx";
 
 /** Pages that doesn't need authentication */
 const publicPages = import.meta.glob("./pages/public/**/*.tsx");
@@ -21,11 +22,19 @@ function filterRoutes(pages: Record<string, () => Promise<unknown>>, rootPath: s
     const formattedPath = path
       .replace(rootPath, "")
       .replace(/\/index\.tsx$/, "")
-      .replace(/\.tsx$/, "");    
+      .replace(/\.tsx$/, "");
 
     return {
       path: formattedPath,
-      Component: lazy(component as any),
+      Component: lazy(async () => {
+        const module: any = await component();
+        return { default: module.default };
+      }),
+      Layout: lazy(async () => {
+        const module: any = await component();
+        const LayoutComponent = module.default?.Layout || MainLayout;
+        return { default: (props: { children: ReactNode }) => <LayoutComponent {...props} /> };
+      }),
     };
   });
 }

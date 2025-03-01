@@ -157,7 +157,7 @@
     position: absolute;
     z-index: 5;
     top: 100%;
-    left: 0px;
+    left: 0;
     max-height: 300px;
     overflow: auto;
     box-sizing: border-box;
@@ -228,7 +228,7 @@
       color: var(--font-quaternary);
       &:hover {
         color: var(--font-secondary-hover);
-        box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.16);
       }
     }
     .MuiSlider-track {

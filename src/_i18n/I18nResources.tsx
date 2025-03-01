@@ -127,6 +127,8 @@ interface CustomLanguage extends ResourceLanguage {
 
     layout: {
       refineYourSearch: string;
+      cart: string;
+      myAccount: string;
     };
 
     locales: Record<string, string>;
@@ -249,7 +251,9 @@ const resources: CustomResource = {
       },
 
       layout: {
-        refineYourSearch: "Refine your search"
+        refineYourSearch: "Refine your search",
+        cart: "Cart",
+        myAccount: "My account"
       },
 
       locales: localesEnUs,
@@ -369,7 +373,9 @@ const resources: CustomResource = {
       },
 
       layout: {
-        refineYourSearch: "Affiner votre recherche"
+        refineYourSearch: "Affiner votre recherche",
+        cart: "Panier",
+        myAccount: "Mon compte"
       },
 
       locales: localesFrFr

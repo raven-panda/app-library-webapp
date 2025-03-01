@@ -38,8 +38,11 @@
       }
     }
 
-    .ebr_header-right .ebr_theme-switch {
+    .ebr_header-right > button, .ebr_header-right .ebr_dropdown-control > .ebr_dropdown-title-button {
       color: var(--font-secondary);
+      padding: 10px 12px;
+      font-weight: 300;
+      font-size: 1rem;
     }
   }
 

@@ -3,7 +3,7 @@ import EbraryIcon from "../icon/EbraryIcon.tsx";
 import Button from "../form/Button.tsx";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {ChevronLeft, Moon, Search, Sun} from "react-feather";
+import {ChevronLeft, Moon, Search, ShoppingCart, Sun, User} from "react-feather";
 import EbrForm from "../form/EbrForm.tsx";
 import getBrowseFormBuilder from "../../form/BrowseFormBuilder.tsx";
 import UrlTransformer from "../../service/UrlTransformer.ts";
@@ -62,6 +62,9 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
             <div className="ebr_header-right">
                 <Button className="ebr_theme-switch" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{theme === "light" ? <Moon /> : <Sun />}</Button>
                 <LanguageDropdown />
+                {/** @todo Hide ShoppingCart button when authentication will be implemented */}
+                <Button><ShoppingCart /> {t("layout.cart")}</Button>
+                <Button><User /> {t("layout.myAccount")}</Button>
             </div>
         </header>
         <section className="ebr_layout-content">

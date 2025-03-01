@@ -40,13 +40,13 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
         </header>
         <section className="ebr_layout-content">
             <aside ref={asideRef} className="ebr_layout-aside" data-open={isSidebarOpen}>
-                <h1>
+                <h1 className="ebr_layout-aside-title">
                     {t("layout.refineYourSearch")}
                     <Button className="ebr_layout-aside-toggle" onClick={() => setIsSidebarOpen(prev => !prev)}>
                         <ChevronLeft />
                     </Button>
                 </h1>
-                <div inert={!isSidebarOpen}>
+                <div className="ebr_layout-aside-content" inert={!isSidebarOpen}>
                     <EbrForm
                         className="ebr_layout-browse-form"
                         onSubmit={(data) =>

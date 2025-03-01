@@ -36,8 +36,17 @@
         transition: transform ease-in-out 0.2s;
       }
 
-      &[data-open="false"] .ebr_layout-aside-toggle > svg {
-        transform: rotate(-180deg);
+      .ebr_layout-aside-content {
+        transition: opacity ease-in-out 0.2s;
+      }
+
+      &[data-open="false"] {
+        .ebr_layout-aside-toggle > svg {
+          transform: rotate(-180deg);
+        }
+        .ebr_layout-aside-content {
+          opacity: 0;
+        }
       }
 
     }

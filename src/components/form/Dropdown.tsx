@@ -1,25 +1,22 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { ChevronDown, Search, X } from "react-feather";
-import { SelectOption } from "../../types/controls/SelectOption";
-import { useTranslation } from "react-i18next";
+import {ReactNode, useEffect, useRef, useState} from "react";
+import {ChevronDown, Search, X} from "react-feather";
+import {SelectOption} from "../../types/controls/SelectOption";
+import {useTranslation} from "react-i18next";
 
-export default function Dropdown({ setFieldValue, name, placeholder, label, options, error, isDefaultExpanded = false, submitCallback }: { setFieldValue: (value: string | number | boolean | number[]) => void; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; submitCallback?: () => void; }) {
+export default function Dropdown({ setFieldValue, defaultValue, name, placeholder, label, options, error, isDefaultExpanded = false }: { setFieldValue: (newValue: string) => void; defaultValue?: string; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; }) {
   const {t} = useTranslation();
 
   const [isExpanded, setExpanded] = useState(isDefaultExpanded);
   const dropdownRef = useRef<HTMLDivElement|null>(null);
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(defaultValue && options.some(o => o.id === defaultValue) ? defaultValue : "");
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [searchInput, setSearchInput] = useState("");
 
-  const optionClickHandler = (value: string) => {
-    setValue(value);
+  const optionClickHandler = (newValue: string) => {
+    setValue(newValue);
     setExpanded(false);
     setSearchInput("");
-    setFieldValue(value);
-
-    if (submitCallback)
-      submitCallback();
+    setFieldValue(newValue);
   };
 
   const getSelectPlaceholder = () => options.find(opt => opt.id === value)?.label ?? placeholder;
@@ -30,7 +27,7 @@ export default function Dropdown({ setFieldValue, name, placeholder, label, opti
 
   return <div className="ebr_form-control">
     <label>{label}</label>
-    <div className="ebr_dropdown-control" data-expanded={isExpanded}>
+    <div className={"ebr_dropdown-control " + (value.length ? "value-selected" : "")} data-expanded={isExpanded}>
       <button type="button" className="ebr_dropdown-title-button" aria-expanded={isExpanded} onClick={() => setExpanded(prev => !prev)}>
         <span>{getSelectPlaceholder()}</span>
         <ChevronDown style={{ transform: `rotate(${isExpanded ? "180deg" : "0deg"})` }} />

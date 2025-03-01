@@ -3,18 +3,19 @@ import EbraryIcon from "../icon/EbraryIcon.tsx";
 import Button from "../form/Button.tsx";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {ChevronLeft} from "react-feather";
+import {ChevronLeft, Search} from "react-feather";
 import EbrForm from "../form/EbrForm.tsx";
 import getBrowseFormBuilder from "../../form/BrowseFormBuilder.tsx";
+import UrlTransformer from "../../service/UrlTransformer.ts";
 
 export default function BrowseLayout({ children }: { children: ReactNode }) {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const asideRef = useRef<HTMLElement>(null);
-    const setSearchParams = useSearchParams()[1];
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const { formBuilder, formMatrix } = getBrowseFormBuilder(t);
+    const { formBuilder, formMatrix, globalAssertions } = getBrowseFormBuilder(t);
 
     useEffect(() => {
         if (!asideRef.current)
@@ -22,6 +23,14 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
 
         asideRef.current.style.marginLeft = isSidebarOpen ? "0px" : `-${asideRef.current.clientWidth - 60}px`;
     }, [isSidebarOpen]);
+
+    const getOriginalData = () => {
+        const entries = Object.entries(UrlTransformer.transformSearchBooksQuery(searchParams));
+        const record: Record<string, string | number | boolean | number[] | undefined> = {};
+
+        entries.forEach(([k, v]) => record[k] = v ?? undefined);
+        return record;
+    };
 
     return <div className="ebr_layout">
         <header className="ebr_header">
@@ -42,12 +51,15 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
                         className="ebr_layout-browse-form"
                         onSubmit={(data) =>
                             setSearchParams(prev => {
-                                Object.entries(data).map(([k, v]) => v.toString().length ? prev.set(k, v) : prev.delete(k));
+                                Object.entries(data).map(([k, v]) => v?.toString()?.length ? prev.set(k, v) : prev.delete(k));
                                 return prev;
                             })
                         }
+                        defaultData={getOriginalData()}
                         formBuilder={formBuilder}
                         formMatrix={formMatrix}
+                        assertions={globalAssertions}
+                        submitButton={<Button className="ebr_submit-action" variant="filled" size="md" type="submit"><Search/> Rechercher</Button>}
                     />
                 </div>
             </aside>

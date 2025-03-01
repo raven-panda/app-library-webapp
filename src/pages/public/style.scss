@@ -30,17 +30,53 @@ div.row {
   gap: 10px;
 }
 
-.ebr_welcome-form .ebr_input-with-icon {
-  padding: 13px;
-  border-radius: 32px;
+.ebr_welcome-form > .ebr_input {
   font-size: 1rem;
+  border: none;
 
-  button > svg {
-    width: 1.5rem;
-    height: 1.5rem;
+  > label {
+    margin: 0;
   }
 
-  & > input {
-    padding-left: 55px;
+  .ebr_input-container {
+    > button {
+      top: calc(50% - 1.1rem);
+      color: var(--font-secondary);
+
+      &:not(:disabled):hover, &:not(:disabled):focus-visible {
+        color: var(--font-secondary-hover);
+      }
+
+      &.ebr_input-icon {
+        left: 0.6rem;
+      }
+
+      &.ebr_input-reset {
+        right: 0.6rem;
+      }
+
+      > svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    > input {
+      border-radius: 32px;
+      background-color: var(--bg-secondary-faded);
+      width: 100%;
+      color: var(--font-secondary);
+      border: none;
+      padding: 20px 20px 20px 3.125rem;
+      font-size: 1rem;
+
+      &:focus {
+        background: var(--bg-tertiary-faded);
+      }
+
+      &::placeholder {
+        color: var(--font-secondary-faded);
+      }
+    }
   }
 }

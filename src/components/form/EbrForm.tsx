@@ -1,8 +1,8 @@
-import {FormEvent, ReactNode, useRef, useState} from "react";
+import {FormEvent, ReactNode, useState} from "react";
 import {FormBuilder, FormBuilderItem} from "../../types/interfaces/FormBuilder";
 import {FormMatrix, FormMatrixItem} from "../../types/interfaces/FormMatrix";
 import DropdownMenu from "../DropdownMenu";
-import {FieldInput, IconInput, SliderInput} from "./Input";
+import {FieldInput, SliderInput} from "./Input";
 import Dropdown from "./Dropdown";
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
@@ -13,7 +13,6 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
   const [formData, setFormData] = useState<Record<string, string|number|boolean|number[]|undefined>>(defaultData ?? {});
   const [globalErrors, setGlobalErrors] = useState<string[]>();
   const [errors, setErrors] = useState<{fieldName: string; message: string;}[]>();
-  const formRef = useRef<HTMLFormElement>(null);
 
   const buildForm = (errors?: {fieldName: string; message: string;}[]): ReactNode => {
     if (!formMatrix || formMatrix.length === 0)
@@ -41,34 +40,50 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
   };
 
   const processField = (field: FormBuilderItem, error?: string) => {
-    const setFieldValue = (value: string|number|boolean|number[]) => {
+    const originalValue = formData[field.name];
+    const setFieldValue = (newValue: string|number|boolean|number[]|undefined) => {
       setFormData(prev => ({
         ...prev,
-        [field.name]: value
+        [field.name]: newValue
       }));
     };
 
-    if (field.type === "iconinput") {
-      return <IconInput setFieldValue={setFieldValue} key={field.name} placeholder={field.placeholder ?? ""} icon={field.icon ?? <></>} name={field.name} iconButtonType={field.isIconButtonSubmit ? "submit" : "disabled"} error={error} />;
-    } else if (field.type === "range") {
+    if (field.type === "range") {
       if (field.rangeMin === undefined || field.rangeMax === undefined)
         throw new Error(`${field.rangeMin === undefined && field.rangeMax === undefined ? "rangeMin and rangeMax" : field.rangeMax === undefined ? "rangeMax" : "rangeMin"} attribute required for range input ${field.name}.`);
-      return <SliderInput setFieldValue={setFieldValue} key={field.name} label={field.label} name={field.name} rangeMin={field.rangeMin} rangeMax={field.rangeMax} error={error} />;
+      return <SliderInput key={field.name} setFieldValue={setFieldValue} label={field.label} name={field.name} rangeMin={field.rangeMin} rangeMax={field.rangeMax} step={field.step} unit={field.unit} error={error} />;
     } else if (field.type === "dropdown") {
       if (!field.dropdownOptions)
         throw new Error("Please provide dropdown options for dropdown " + field.name);
-      return <Dropdown key={field.name} submitCallback={/*field.submitOnChange ? formRef.current?.submit :*/ undefined } setFieldValue={setFieldValue} name={field.name} label={field.label ?? <></>} placeholder={field.placeholder ?? ""} options={field.dropdownOptions} error={error} />;
+      return <Dropdown key={field.name} defaultValue={parseFieldValue(originalValue, "dropdown")} setFieldValue={setFieldValue} name={field.name} label={field.label ?? <></>} placeholder={field.placeholder ?? ""} options={field.dropdownOptions} error={error} />;
     } else {
-      return <FieldInput setFieldValue={setFieldValue} key={field.name} placeholder={field.placeholder ?? ""} label={field.label} name={field.name} type={field.type} error={error} />;
+      return <FieldInput key={field.name} setFieldValue={setFieldValue} defaultValue={parseFieldValue(originalValue, "fieldinput")} placeholder={field.placeholder ?? ""} label={field.label} name={field.name} type={field.type} error={error} icon={field.icon ?? <></>} iconButtonType={field.isIconButtonSubmit ? "submit" : "disabled"} />;
     }
   };
 
-  const _onSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  function parseFieldValue(value: string|number|boolean|number[]|string[]|undefined, fieldType: "fieldinput"|"range"|"dropdown"): any {
+    if (!value)
+      return undefined;
+
+    switch (fieldType) {
+      case "fieldinput":
+        return typeof value === "string" || typeof value === "number" ? value : undefined;
+      case "range":
+        return Array.isArray(value) && value.length === 2 && value.every(v => typeof v === "number") ? value : undefined;
+      case "dropdown":
+        return typeof value === "string" || (Array.isArray(value) && value.every(v => typeof v === "string")) ? value : undefined;
+      default:
+        return undefined;
+    }
+  }
+
+  const _onSubmit = (e: FormEvent|null) => {
+    e?.preventDefault();
     const validationData = validateForm();
 
     if (validationData.valid) {
       onSubmit(formData);
+      console.log({ formData });
       setGlobalErrors(undefined);
       setErrors(undefined);
     } else if (validationData.invalidGlobalAssertions && validationData.invalidGlobalAssertions.length > 0) {
@@ -137,7 +152,6 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     switch (field.type) {
       case "range":
         return value !== undefined && Array.isArray(value) && value.length === 2 && value[0] !== undefined && value[1] !== undefined;
-      case "iconinput":
       case "dropdown":
       case "text":
         return value !== undefined && typeof value === "string" && value.length > 0;
@@ -153,13 +167,13 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
       case "EMAIL":
         return typeof value === "string" && emailRegex.test(value);
       case "NUMBER_NOT_ZERO":
-        return typeof value === "number" && value > 0;
+        return !value?.toString() || (typeof value === "number" && value > 0);
       default:
         return true;
     }
   };
 
-  return <form ref={formRef} action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
+  return <form action="#" onSubmit={_onSubmit} className={"ebr_form" + (className ? " " + className : "")} noValidate>
     {globalErrors && <p className="ebr_input-error">{globalErrors.join(", ")}</p>}
     {buildForm(errors)}
     {submitButton ?? <button type="submit" style={{ display: "none" }}>Test</button>}

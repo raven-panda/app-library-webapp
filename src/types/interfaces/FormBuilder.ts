@@ -4,10 +4,11 @@ import { AssertionType } from "../enums/AssertionEnum";
 
 export interface FormBuilderItem {
   name: string;
-  type: HTMLInputTypeAttribute|"iconinput"|"dropdown";
+  type: HTMLInputTypeAttribute|"dropdown";
   required: boolean;
   oneOfRequired?: boolean;
   submitOnChange?: boolean;
+  submitOnClear?: boolean;
   assertion?: AssertionType;
   placeholder?: string;
   label?: ReactNode|string;
@@ -15,6 +16,8 @@ export interface FormBuilderItem {
   isIconButtonSubmit?: boolean;
   rangeMin?: number;
   rangeMax?: number;
+  step?: number;
+  unit?: string;
   dropdownOptions?: SelectOption[];
 }
 

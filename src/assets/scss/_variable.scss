@@ -6,6 +6,7 @@ body {
   --bg-tertiary: rgb(200, 181, 150);
   --bg-tertiary-faded: rgba(200, 181, 150, 0.7);
   --bg-quaternary: #a5b0ce;
+  --bg-fifth: rgb(255, 241, 185);
 
   --bg-header: linear-gradient(to bottom, rgb(0, 0, 0) -20%, rgba(0, 0, 0, 0));
 
@@ -16,8 +17,10 @@ body {
   --font-secondary-hover: #fff586;
   --font-secondary-faded: rgba(252, 252, 252, 0.7);
   --font-tertiary: #FFEA00;
+  --font-quaternary: #D9D9D9;
   --font-accent-blue: #5FF4FF;
   --font-accent-red: rgb(255, 95, 95);
+  --font-accent-orange: #FFC067;
 }
 
 body.dark {

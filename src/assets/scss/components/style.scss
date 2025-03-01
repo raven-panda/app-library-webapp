@@ -4,7 +4,8 @@
 .ebr_button {
   border-radius: 8px;
   transition: color ease-in-out 0.1s, background-color ease-in-out 0.3s;
-  &:hover, &:focus-visible {
+
+  &:not(:disabled):hover, &:not(:disabled):focus-visible {
     background: rgba(0, 0, 0, 0.1);
     color: var(--font-secondary-hover);
   }
@@ -13,7 +14,7 @@
 .ebr_button-filled {
   background: var(--bg-tertiary);
   flex: 0 1;
-  &:hover, &:focus-visible {
+  &:not(:disabled):hover, &:not(:disabled):focus-visible {
     background: var(--bg-tertiary-faded);
     color: var(--font-secondary-hover);
   }
@@ -39,6 +40,7 @@
     justify-content: space-between;
     font-size: 0.875rem;
     font-weight: 600;
+    margin-top: 8px;
 
     svg {
       width: 1rem;

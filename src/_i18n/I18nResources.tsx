@@ -51,8 +51,9 @@ interface CustomLanguage extends ResourceLanguage {
       language: string;
       languagePlaceholder: string;
 
+      formatPlaceholder: string;
+
       minReviewsNumber: string;
-      numberPlaceholder: string;
 
       priceRange: string,
 
@@ -171,10 +172,11 @@ const resources: CustomResource = {
         targetAudiencePlaceholder: "Select a target public",
 
         minReviewsNumber: "Minimum reviews amount",
-        numberPlaceholder: "Enter a number",
 
         language: "Language",
         languagePlaceholder: "Select a language",
+
+        formatPlaceholder: "Select a format",
 
         contentSection: "Content and classification",
         priceReviewsSection: "Price and reviews",
@@ -294,7 +296,6 @@ const resources: CustomResource = {
         targetAudiencePlaceholder: "Sélectionnez un public cible",
 
         minReviewsNumber: "Nombre d’avis minimum",
-        numberPlaceholder: "Entrez un nombre",
 
         priceRange: "Tranche de prix",
 
@@ -302,6 +303,8 @@ const resources: CustomResource = {
 
         language: "Langue",
         languagePlaceholder: "Sélectionnez une langue",
+
+        formatPlaceholder: "Sélectionnez un format",
 
         searchButtonAriaLabel: "Boutton rechercher",
         searchFieldAriaLabel: "Champ de recherche",

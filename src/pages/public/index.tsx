@@ -34,7 +34,7 @@ function WelcomePage() {
         formBuilder={[
           {
             name: "searchAll",
-            type: "iconinput",
+            type: "text",
             placeholder: t("form.searchAllInput"),
             icon: <Search size={24}/>,
             isIconButtonSubmit: true,

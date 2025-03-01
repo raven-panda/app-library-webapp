@@ -1,10 +1,11 @@
 import {FormBuilderGetter} from "../types/controls/FormBuilderGetter.ts";
-import {Book, Edit3, Paperclip, Star, Tag} from "react-feather";
+import {Book, Edit3, FileText, Paperclip, Star, Tag} from "react-feather";
 import {BookGenreLabels} from "../types/enums/book/BookGenreEnum.ts";
 import {BookThemeLabels} from "../types/enums/book/BookThemeEnum.ts";
 import {TargetAudienceLabel} from "../types/enums/TargetAudienceEnum.ts";
 import {LanguagesLabel} from "../types/enums/LanguagesLabels.ts";
 import {EuroIcon} from "../components/icon/EuroIcon.tsx";
+import {BookFormatLabels} from "../types/enums/book/BookFormatEnum.ts";
 
 const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) => string) => {
     return {
@@ -12,30 +13,34 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
             {
                 name: "author",
                 placeholder: translate("form.author"),
-                type: "iconinput",
-                icon: <Edit3 />,
-                required: false
+                type: "text",
+                icon: <Edit3 size={"1rem"} />,
+                required: false,
+                submitOnClear: true
             },
             {
                 name: "title",
-                type: "iconinput",
+                type: "text",
                 placeholder: translate("form.title"),
-                icon: <Book size={24}/>,
-                required: false
+                icon: <Book size={"1rem"}/>,
+                required: false,
+                submitOnClear: true
             },
             {
                 name: "editor",
-                type: "iconinput",
+                type: "text",
                 placeholder: translate("form.editor"),
-                icon: <Paperclip size={24}/>,
-                required: false
+                icon: <Paperclip size={"1rem"}/>,
+                required: false,
+                submitOnClear: true
             },
             {
                 name: "isbn",
-                type: "iconinput",
+                type: "text",
                 placeholder: translate("form.isbn"),
-                icon: <Tag size={24}/>,
-                required: false
+                icon: <Tag size={"1rem"}/>,
+                required: false,
+                submitOnClear: true
             },
 
             {
@@ -46,7 +51,8 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                     id: k,
                     label: translate(v)
                 })),
-                required: false
+                required: false,
+                submitOnChange: true
             },
             {
                 name: "theme",
@@ -56,7 +62,8 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                     id: k,
                     label: translate(v)
                 })),
-                required: false
+                required: false,
+                submitOnChange: true
             },
             {
                 name: "targetAudience",
@@ -66,7 +73,8 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                     id: k,
                     label: translate(v)
                 })),
-                required: false
+                required: false,
+                submitOnChange: true
             },
             {
                 name: "language",
@@ -76,13 +84,26 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                     id: k,
                     label: translate(v)
                 })),
-                required: false
+                required: false,
+                submitOnChange: true
+            },
+            {
+                name: "format",
+                type: "dropdown",
+                placeholder: translate("form.formatPlaceholder"),
+                dropdownOptions: Object.entries(BookFormatLabels).map(([k, v]) => ({
+                    id: k,
+                    label: translate(v)
+                })),
+                required: false,
+                submitOnChange: true
             },
 
             {
                 name: "minReviewsNumber",
                 type: "number",
-                placeholder: translate("form.numberPlaceholder"),
+                placeholder: translate("form.minReviewsNumber"),
+                icon: <FileText size={"1rem"} />,
                 required: false,
                 assertion: "NUMBER_NOT_ZERO"
             },
@@ -92,6 +113,7 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 label: <><EuroIcon width={"0.5938rem"} height={"0.6875rem"} /> {translate("form.priceRange")}</>,
                 rangeMin: 0,
                 rangeMax: 100,
+                unit: "€",
                 required: false
             },
             {
@@ -99,7 +121,7 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 type: "range",
                 label: <><Star width={"0.875rem"} height={"0.875rem"} /> {translate("form.reviewsNumberRange")}</>,
                 rangeMin: 0,
-                rangeMax: 100,
+                rangeMax: 5,
                 required: false
             },
         ],
@@ -109,7 +131,7 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 menuTitle: translate("form.browseGeneral"),
             },
             {
-                fields: ["genre", "theme", "targetAudience", "language"],
+                fields: ["genre", "theme", "targetAudience", "language", "format"],
                 menuTitle: translate("form.contentSection"),
                 isDropdownMenu: true
             },

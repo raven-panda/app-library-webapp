@@ -55,7 +55,7 @@ export default function BrowseLayout({ children }: { children: ReactNode }) {
                         icon: <Search size={"1.3rem"}/>,
                         iconButtonType: "submit",
                         isIconButtonSubmit: true,
-                        required: true,
+                        required: false,
                     }
                 ]} submitButton={<></>} />
             </div>

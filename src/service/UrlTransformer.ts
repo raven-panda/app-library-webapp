@@ -60,4 +60,10 @@ export default class UrlTransformer {
         };
     }
 
+    public static encodeFromObject(params: Record<string, any> | object): string {
+        return Object.entries(params)
+          .filter(([k, v]) => k && v)
+          .map(([k, v]) => encodeURIComponent(k) + "=" + encodeURIComponent(v)).join('&');
+    }
+
 }

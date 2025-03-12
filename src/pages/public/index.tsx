@@ -1,13 +1,13 @@
 import {Moon, Search, Sliders, Sun} from "react-feather";
 import {useTranslation} from "react-i18next";
-import Button from "../../components/form/Button";
-import EbrForm from "../../components/form/EbrForm.tsx";
+import Button from "@/lib/components/form/Button";
+import EbrForm from "@/lib/components/form/EbrForm.tsx";
 import "./style.scss";
 import {useNavigate} from "react-router-dom";
 import {ReactNode} from "react";
-import EbraryIcon from "../../components/icon/EbraryIcon.tsx";
-import LanguageDropdown from "../../components/form/LanguageDropdown.tsx";
-import {useTheme} from "../../hook/Theme.tsx";
+import EbraryIcon from "@/lib/components/icon/EbraryIcon.tsx";
+import LanguageDropdown from "@/lib/components/form/LanguageDropdown.tsx";
+import {useTheme} from "@/hook/Theme.tsx";
 
 function WelcomePage() {
   const {t} = useTranslation();

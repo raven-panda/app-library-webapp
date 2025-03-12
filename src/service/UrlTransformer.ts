@@ -1,4 +1,4 @@
-import {ISearchBooks} from "../types/dto/Books.ts";
+import {ISearchBooks} from "@/lib/types/dto/Books.ts";
 
 export default class UrlTransformer {
 

@@ -1,11 +1,11 @@
-import {FormBuilderGetter} from "../types/controls/FormBuilderGetter.ts";
+import {FormBuilderGetter} from "@/lib/types/controls/FormBuilderGetter.ts";
 import {Book, Edit3, FileText, Paperclip, Star, Tag} from "react-feather";
-import {BookGenreLabels} from "../types/enums/book/BookGenreEnum.ts";
-import {BookThemeLabels} from "../types/enums/book/BookThemeEnum.ts";
-import {TargetAudienceLabel} from "../types/enums/TargetAudienceEnum.ts";
-import {LanguagesLabel} from "../types/enums/LanguagesLabels.ts";
+import {BookGenreLabels} from "@/lib/types/enums/book/BookGenreEnum.ts";
+import {BookThemeLabels} from "@/lib/types/enums/book/BookThemeEnum.ts";
+import {TargetAudienceLabel} from "@/lib/types/enums/TargetAudienceEnum.ts";
+import {LanguagesLabel} from "@/lib/types/enums/LanguagesLabels.ts";
 import {EuroIcon} from "../components/icon/EuroIcon.tsx";
-import {BookFormatLabels} from "../types/enums/book/BookFormatEnum.ts";
+import {BookFormatLabels} from "@/lib/types/enums/book/BookFormatEnum.ts";
 
 const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) => string) => {
     return {

@@ -1,4 +1,4 @@
-import { IBooksGlobal } from "../../types/Book";
+import { IBooksGlobal } from "@/lib/types/Book";
 
 const booksGlobal_fixture: IBooksGlobal[] = [
   {

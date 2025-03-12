@@ -1,7 +1,7 @@
 import {useRef, useState} from "react";
 import {ChevronDown, Globe} from "react-feather";
 import {useTranslation} from "react-i18next";
-import {SUPPORTED_LANGUAGES} from "../../_i18n/I18nResources.tsx";
+import {SUPPORTED_LANGUAGES} from "@/_i18n/I18nResources.tsx";
 import Iso6391 from "iso-639-1";
 
 export default function LanguageDropdown() {

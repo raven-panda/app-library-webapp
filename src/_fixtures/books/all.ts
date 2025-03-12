@@ -1,4 +1,4 @@
-import { IBooks } from "../../types/Book";
+import { IBooks } from "@/lib/types/Book";
 
 const books_fixture: IBooks[] = [
   {

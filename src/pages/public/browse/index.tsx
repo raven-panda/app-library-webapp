@@ -1,4 +1,4 @@
-import {useBrowseBooks} from "../../../hook/api/Book";
+import {useBrowseBooks} from "@/hook/api/Book.ts";
 import {useEffect} from "react";
 
 export default function BrowsePage() {

@@ -1,6 +1,6 @@
 import {ReactNode, useEffect, useRef, useState} from "react";
 import {ChevronDown, Search, X} from "react-feather";
-import {SelectOption} from "../../types/controls/SelectOption";
+import {SelectOption} from "@/lib/types/controls/SelectOption.ts";
 import {useTranslation} from "react-i18next";
 
 export default function Dropdown({ setFieldValue, defaultValue, name, placeholder, label, options, error, isDefaultExpanded = false }: { setFieldValue: (newValue: string) => void; defaultValue?: string; name: string; placeholder: string; label: ReactNode|string; options: SelectOption[]; error?: string; isDefaultExpanded?: boolean; }) {

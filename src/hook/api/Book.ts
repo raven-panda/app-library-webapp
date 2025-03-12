@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
-import {IBooks, IBooksGlobal} from "../../types/Book";
-import booksGlobal_fixture from "../../_fixtures/books/global";
-import booksServiceMock from "../../_mock/BooksServiceMock.ts";
+import {IBooks, IBooksGlobal} from "@/lib/types/Book.ts";
+import booksGlobal_fixture from "@/_fixtures/books/global";
+import booksServiceMock from "@/_mock/BooksServiceMock.ts";
 import {useSearchParams} from "react-router-dom";
 
 const isFixturesEnabled = import.meta.env.VITE_ENABLE_FIXTURES === "true";

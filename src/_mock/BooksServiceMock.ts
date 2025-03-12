@@ -1,7 +1,7 @@
-import {IBooks, IBooksGlobal} from "../types/Book.ts";
-import booksGlobal_fixture from "../_fixtures/books/global.ts";
-import books_fixture from "../_fixtures/books/all.ts";
-import UrlTransformer from "../service/UrlTransformer.ts";
+import {IBooks, IBooksGlobal} from "@/lib/types/Book.ts";
+import booksGlobal_fixture from "@/_fixtures/books/global.ts";
+import books_fixture from "@/_fixtures/books/all.ts";
+import UrlTransformer from "@/service/UrlTransformer.ts";
 
 class BooksServiceMock {
 

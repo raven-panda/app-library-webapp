@@ -1,14 +1,14 @@
 import {ReactNode, useEffect, useRef, useState} from "react";
-import EbraryIcon from "../icon/EbraryIcon.tsx";
-import Button from "../form/Button.tsx";
+import EbraryIcon from "../components/icon/EbraryIcon.tsx";
+import Button from "../components/form/Button.tsx";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {ChevronLeft, Moon, Search, ShoppingCart, Sun, User} from "react-feather";
-import EbrForm from "../form/EbrForm.tsx";
-import getBrowseFormBuilder from "../../form/BrowseFormBuilder.tsx";
-import UrlTransformer from "../../service/UrlTransformer.ts";
-import LanguageDropdown from "../form/LanguageDropdown.tsx";
-import {useTheme} from "../../hook/Theme.tsx";
+import EbrForm from "../components/form/EbrForm.tsx";
+import getBrowseFormBuilder from "../form/BrowseFormBuilder.tsx";
+import UrlTransformer from "@/service/UrlTransformer.ts";
+import LanguageDropdown from "../components/form/LanguageDropdown.tsx";
+import {useTheme} from "@/hook/Theme.tsx";
 
 export default function BrowseLayout({ children }: { children: ReactNode }) {
     const {t} = useTranslation();

@@ -1,12 +1,12 @@
 import {FormEvent, ReactNode, useState} from "react";
-import {FormBuilder, FormBuilderItem} from "../../types/interfaces/FormBuilder";
-import {FormMatrix, FormMatrixItem} from "../../types/interfaces/FormMatrix";
 import DropdownMenu from "../DropdownMenu";
 import {FieldInput, SliderInput} from "./Input";
 import Dropdown from "./Dropdown";
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
-import {AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels} from "../../types/enums/AssertionEnum";
+import {FormMatrix, FormMatrixItem} from "@/lib/types/interfaces/FormMatrix.ts";
+import {FormBuilder, FormBuilderItem} from "@/lib/types/interfaces/FormBuilder.ts";
+import {AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels} from "@/lib/types/enums/AssertionEnum.ts";
 
 export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton }: {className?: string; defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton?: ReactNode|undefined; }) {
   const {t} = useTranslation();

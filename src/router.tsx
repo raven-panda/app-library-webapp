@@ -1,5 +1,5 @@
 import {lazy, ReactNode} from "react";
-import BrowseLayout from "./components/layout/BrowseLayout.tsx";
+import BrowseLayout from "@/lib/layout/BrowseLayout.tsx";
 
 /** Pages that doesn't need authentication */
 const publicPages = import.meta.glob("./pages/public/**/*.tsx");

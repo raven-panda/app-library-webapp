@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import {ApiResponse} from "@/lib/types/ApiResponse.ts";
 import {ApiCall_Mock, ApiCallWithToken_Mock} from "@/service/actions/FixtureAction.ts";
 import UrlTransformer from "@/service/UrlTransformer.ts";
@@ -11,7 +11,7 @@ export type ApiCallFnType = () => ({
 });
 
 export type ApiCallWithTokenFnType = (jwt: string) => ({
-  get<TData>(url: string): Promise<ApiResponse<TData>>;
+  get<TData>(url: string, params?: Record<string, any>): Promise<ApiResponse<TData>>;
   post<TPayload, TData>(url: string, payload: TPayload): Promise<ApiResponse<TData>>;
 });
 
@@ -23,25 +23,25 @@ export const ApiCall: ApiCallFnType = isFixturesEnabled ? ApiCall_Mock : () => (
     }
 
     try {
-      return {
-        data: await axios.get(finalUrl)
-      };
+      const { data, status } = await axios.get(finalUrl);
+      return { data, status };
     } catch (error) {
-      console.error('Error getting data:', error);
+      console.error('Error getting data :', (error as any).message);
       return {
-        error: error
+        error: (error as any).message,
+        status: (error as AxiosError).status
       };
     }
   },
   post: async <TPayload, TData>(url: string, payload: TPayload): Promise<ApiResponse<TData>> => {
     try {
-      return {
-        data: await axios.post(url, payload)
-      };
+      const { data, status } = await axios.post(url, payload);
+      return { data, status };
     } catch (error) {
-      console.error('Error posting data:', error);
+      console.error('Error posting data :', (error as any).message);
       return {
-        error: error
+        error: (error as any).message,
+        status: (error as any).status
       };
     }
   }
@@ -61,29 +61,29 @@ export const ApiCallWithToken: ApiCallWithTokenFnType = isFixturesEnabled ? ApiC
       }
 
       try {
-        return {
-          data: await axios.get(finalUrl, {
-            headers
-          })
-        };
+        const { data, status } = await axios.get(finalUrl, {
+          headers
+        });
+        return { data, status };
       } catch (error) {
-        console.error('Error getting data:', error);
+        console.error('Error getting data :', (error as any).message);
         return {
-          error: error
+          error: (error as any).message,
+          status: (error as any).status
         };
       }
     },
     post: async <TPayload, TData>(url: string, payload: TPayload): Promise<ApiResponse<TData>> => {
       try {
-        return {
-          data: await axios.post(url, payload, {
-            headers
-          })
-        };
+        const { data, status } = await axios.post(url, payload, {
+          headers
+        });
+        return { data, status };
       } catch (error) {
-        console.error('Error posting data:', error);
+        console.error('Error posting data :', (error as any).message);
         return {
-          error: error
+          error: (error as any).message,
+          status: (error as any).status
         };
       }
     }

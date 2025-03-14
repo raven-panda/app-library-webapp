@@ -1,5 +1,6 @@
 @use "form";
 @use "layout";
+@use '../animations' as *;
 
 .ebr_button {
   border-radius: 8px;
@@ -30,6 +31,35 @@
 
 .ebr_button-lg {
   padding: 16px 20px;
+}
+
+.ebr_loader-cover-all {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+  background-color: var(--bg-primary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ebr_loader {
+    font-size: 1.5rem;
+  }
+}
+
+.ebr_loader {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .ebr_loader-spinner {
+    @include spin-animation;
+  }
 }
 
 .ebr_dropdown-menu {

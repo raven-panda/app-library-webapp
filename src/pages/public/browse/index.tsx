@@ -4,26 +4,24 @@ import {Link, useSearchParams} from "react-router-dom";
 import {IBookGlobal} from "@/lib/types/Book.ts";
 import {useTranslation} from "react-i18next";
 import {API_FILE} from "@/lib/Api.ts";
-import {useEffect} from "react";
 import './style.scss';
+import DataLoader from "@/lib/components/DataLoader.tsx";
 
 export default function BrowsePage() {
   const { t } = useTranslation();
-  const { books } = useBrowseBooks();
+  const { books, isLoading } = useBrowseBooks();
   const [searchParams] = useSearchParams();
 
-  useEffect(() => {
-    console.log(searchParams);
-  }, [searchParams]);
-
-  return <section>
-    {CollectionUtils.isEmpty(books) ?
-      <h1>{t('browsePage.noResults')} <Link to={""} className="link">{t('browsePage.clearSearch')}</Link></h1>
-    : <>
-      <h1>{searchParams.size > 0 ? "Produits correspondant à votre recherche" : "Tous nos produits"}</h1>
-      <div className='ebr_browse-page-content'>{books?.map(book => <BookCard key={book.id} book={book}></BookCard>)}</div>
-    </>}
-  </section>;
+  return <DataLoader isLoading={isLoading}>
+    <section>
+      {CollectionUtils.isEmpty(books) ?
+        <h1>{t('browsePage.noResults')} <Link to={""} className="link">{t('browsePage.clearSearch')}</Link></h1>
+        : <>
+          <h1>{searchParams.size > 0 ? "Produits correspondant à votre recherche" : "Tous nos produits"}</h1>
+          <div className='ebr_browse-page-content'>{books?.map(book => <BookCard key={book.id} book={book}></BookCard>)}</div>
+        </>}
+    </section>
+  </DataLoader>;
 }
 
 function BookCard({ book }: { book: IBookGlobal; }) {

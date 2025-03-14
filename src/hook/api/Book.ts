@@ -6,21 +6,29 @@ import {IBook, IBookGlobal} from "@/lib/types/Book.ts";
 export const useBrowseBooks = () => {
   const [searchParams] = useSearchParams();
   const [books, setBooks] = useState<IBookGlobal[]>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    booksService.search(searchParams).then(res => res.data && setBooks(res.data));
+    setIsLoading(true);
+    booksService.search(searchParams)
+      .then(res => res.data && setBooks(res.data))
+      .then(() => setIsLoading(false));
   }, [searchParams]);
 
-  return { books };
+  return { books, isLoading };
 
 };
 
 export const useBookById = (id: string) => {
   const [book, setBook] = useState<IBook>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    booksService.getById(id).then(res => res.data && setBook(res.data));
+    setIsLoading(true);
+    booksService.getById(id)
+      .then(res => res.data && setBook(res.data))
+      .then(() => setIsLoading(false));
   }, [id]);
 
-  return { book };
+  return { book, isLoading };
 };

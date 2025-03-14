@@ -4,6 +4,7 @@ import NotFoundPage from './pages/error/not-found-page';
 import { PUBLIC_ROUTES } from './router';
 import { ThemeProvider } from './hook/Theme';
 import { ToastContainer } from 'react-toastify';
+import PageLoader from "@/lib/components/PageLoader.tsx";
 
 function App() {
   useEffect(() => {
@@ -13,7 +14,7 @@ function App() {
   return (
     <ThemeProvider>
       <ToastContainer />
-      <Suspense fallback={<>loading</>}>
+      <Suspense fallback={<PageLoader />}>
         <BrowserRouter>
           <Routes>
             {PUBLIC_ROUTES.map(({ path, Component, Layout }) => (

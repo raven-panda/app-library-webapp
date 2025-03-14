@@ -5,7 +5,6 @@ import {BookThemeLabels} from "@/lib/types/enums/book/BookThemeEnum.ts";
 import {TargetAudienceLabel} from "@/lib/types/enums/TargetAudienceEnum.ts";
 import {LanguagesLabel} from "@/lib/types/enums/LanguagesLabels.ts";
 import {EuroIcon} from "../components/icon/EuroIcon.tsx";
-import {BookFormatLabels} from "@/lib/types/enums/book/BookFormatEnum.ts";
 
 const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) => string) => {
     return {
@@ -87,17 +86,6 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 required: false,
                 submitOnChange: true
             },
-            {
-                name: "format",
-                type: "dropdown",
-                placeholder: translate("form.formatPlaceholder"),
-                dropdownOptions: Object.entries(BookFormatLabels).map(([k, v]) => ({
-                    id: k,
-                    label: translate(v)
-                })),
-                required: false,
-                submitOnChange: true
-            },
 
             {
                 name: "minReviewsNumber",
@@ -131,7 +119,7 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 menuTitle: translate("form.browseGeneral"),
             },
             {
-                fields: ["genre", "theme", "targetAudience", "language", "format"],
+                fields: ["genre", "theme", "targetAudience", "language"],
                 menuTitle: translate("form.contentSection"),
                 isDropdownMenu: true
             },

@@ -6,7 +6,7 @@ import { LanguageCode } from "iso-639-1";
 import { TargetAudienceType } from "./enums/TargetAudienceEnum";
 
 export interface IBook {
-  id?: number;
+  id?: string;
   isbn: string;
   title: string;
   author: IAuthor;
@@ -27,9 +27,10 @@ export interface IBook {
 }
 
 export interface IBookGlobal {
-  id?: number;
+  id: string;
   title: string;
   authorFullName: string;
+  editor: string;
   /** @url */
   coverFileId: string;
   reviews: number;

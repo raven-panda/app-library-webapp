@@ -70,3 +70,39 @@
 .link {
   color: var(--font-accent-dblue);
 }
+
+.ebr_book-card {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  border: solid 1px var(--bg-secondary-faded);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--bg-secondary-faded);
+  transition: background-color ease-in-out 0.2s;
+
+  &:hover {
+    background-color: var(--bg-secondary-faded2);
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+  }
+
+  .ebr_book-card-prop {
+    color: var(--font-primary-faded)
+  }
+
+  h2, p {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+}

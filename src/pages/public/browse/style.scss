@@ -1,0 +1,9 @@
+.ebr_browse-page-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10% 2%;
+
+  > a {
+    text-decoration: none;
+  }
+}

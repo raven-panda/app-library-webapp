@@ -26,6 +26,11 @@ interface CustomLanguage extends ResourceLanguage {
       subTitle: string;
     };
 
+    browsePage: {
+      noResults: string;
+      clearSearch: string;
+    };
+
     form: {
       searchAllInput: string;
       delete: string;
@@ -131,6 +136,12 @@ interface CustomLanguage extends ResourceLanguage {
       myAccount: string;
     };
 
+    author: string;
+    editor: string;
+    note: string;
+    price: string;
+    reviews: string;
+
     locales: Record<string, string>;
   };
 }
@@ -149,6 +160,11 @@ const resources: CustomResource = {
       welcomePage: {
         title: "the online library",
         subTitle: "Your favorite books in just a few clicks"
+      },
+
+      browsePage: {
+        noResults: "No results. Try to search something else.",
+        clearSearch: "Clear search",
       },
 
       form: {
@@ -256,6 +272,12 @@ const resources: CustomResource = {
         myAccount: "My account"
       },
 
+      author: 'Author',
+      editor: 'Editor',
+      note: 'Note',
+      price: 'Price',
+      reviews: "reviews",
+
       locales: localesEnUs,
     }
   },
@@ -272,6 +294,11 @@ const resources: CustomResource = {
       welcomePage: {
         title: "la bibliothèque en ligne",
         subTitle: "Vos livres préféré en quelque clics"
+      },
+
+      browsePage: {
+        noResults: "Aucun résultat. Essayer de chercher autre chose.",
+        clearSearch: "Effacer la recherche",
       },
 
       form: {
@@ -377,6 +404,12 @@ const resources: CustomResource = {
         cart: "Panier",
         myAccount: "Mon compte"
       },
+
+      author: 'Auteur',
+      editor: 'Éditeur',
+      note: 'Note',
+      price: 'Prix',
+      reviews: "avis",
 
       locales: localesFrFr
     }

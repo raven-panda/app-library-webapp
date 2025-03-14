@@ -5,7 +5,7 @@ import { BookThemeType } from "./enums/book/BookThemeEnum";
 import { LanguageCode } from "iso-639-1";
 import { TargetAudienceType } from "./enums/TargetAudienceEnum";
 
-export interface IBooks {
+export interface IBook {
   id?: number;
   isbn: string;
   title: string;
@@ -26,7 +26,7 @@ export interface IBooks {
   price: number;
 }
 
-export interface IBooksGlobal {
+export interface IBookGlobal {
   id?: number;
   title: string;
   authorFullName: string;

@@ -1,6 +1,6 @@
-import { IBooks } from "@/lib/types/Book";
+import { IBook } from "@/lib/types/Book";
 
-const books_fixture: IBooks[] = [
+const books_fixture: IBook[] = [
   {
     "id": 1,
     "title": "The Mysterious Island",

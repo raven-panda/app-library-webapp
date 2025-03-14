@@ -1,5 +1,6 @@
 import {lazy, ReactNode} from "react";
 import BrowseLayout from "@/lib/layout/BrowseLayout.tsx";
+import {useParams} from "react-router-dom";
 
 /** Pages that doesn't need authentication */
 const publicPages = import.meta.glob("./pages/public/**/*.tsx");
@@ -23,14 +24,22 @@ function filterRoutes(pages: Record<string, () => Promise<unknown>>, rootPath: s
     const formattedPath = path
       .replace(rootPath, "")
       .replace(/\/index\.tsx$/, "")
-      .replace(/\.tsx$/, "");
+      .replace(/\.tsx$/, "")
+      .replace(/\[([^\]]+)]/g, ":$1");
+
+    const LazyComponent = lazy(async () => {
+      const module: any = await component();
+      return { default: module.default };
+    });
+
+    const WrapperComponent = (props: any) => {
+      const params = useParams();
+      return <LazyComponent {...props} {...params} />;
+    };
 
     return {
       path: formattedPath,
-      Component: lazy(async () => {
-        const module: any = await component();
-        return { default: module.default };
-      }),
+      Component: WrapperComponent,
       Layout: lazy(async () => {
         const module: any = await component();
         const LayoutComponent = module.default?.Layout || BrowseLayout;

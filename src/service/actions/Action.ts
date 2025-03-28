@@ -1,7 +1,14 @@
 import axios, {AxiosError} from "axios";
 import {ApiResponse} from "@/lib/types/ApiResponse.ts";
-import {ApiCall_Mock, ApiCallWithToken_Mock} from "@/service/actions/FixtureAction.ts";
 import UrlTransformer from "@/service/UrlTransformer.ts";
+
+const ApiCall_Mock = () => {
+  throw new Error('Not implemented');
+};
+
+const ApiCallWithToken_Mock = () => {
+  throw new Error('Not implemented');
+};
 
 const isFixturesEnabled = import.meta.env.VITE_ENABLE_FIXTURES === "true";
 

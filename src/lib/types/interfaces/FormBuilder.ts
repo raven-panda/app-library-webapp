@@ -4,7 +4,7 @@ import { AssertionType } from "../enums/AssertionEnum";
 
 export interface FormBuilderItem {
   name: string;
-  type: HTMLInputTypeAttribute|"dropdown";
+  type: HTMLInputTypeAttribute|"dropdown"|"multi-dropdown";
   required: boolean;
   oneOfRequired?: boolean;
   submitOnChange?: boolean;

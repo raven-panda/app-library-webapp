@@ -10,12 +10,13 @@ export interface IBook {
   isbn: string;
   title: string;
   author: IAuthor;
+  description: string;
   /** @url */
   coverFileId: string;
   editor: string;
   genre: BookGenreType;
-  theme: BookThemeType;
-  otherTheme: string|null;
+  themes: BookThemeType[];
+  otherThemes: string[]|null;
   format: BookFormatType;
   isPhysicalFormat: boolean;
   languageCode: LanguageCode;

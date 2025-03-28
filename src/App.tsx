@@ -1,9 +1,9 @@
 import {Suspense, useEffect} from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NotFoundPage from './pages/error/not-found-page';
-import { PUBLIC_ROUTES } from './router';
-import { ThemeProvider } from './hook/Theme';
-import { ToastContainer } from 'react-toastify';
+import {PUBLIC_ROUTES} from './router';
+import {ThemeProvider} from './hook/Theme';
+import {ToastContainer} from 'react-toastify';
 import PageLoader from "@/lib/components/PageLoader.tsx";
 
 function App() {

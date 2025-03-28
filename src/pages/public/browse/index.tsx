@@ -10,12 +10,12 @@ import DataLoader from "@/lib/components/DataLoader.tsx";
 export default function BrowsePage() {
   const { t } = useTranslation();
   const { books, isLoading } = useBrowseBooks();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return <DataLoader isLoading={isLoading}>
     <section>
       {CollectionUtils.isEmpty(books) ?
-        <h1>{t('browsePage.noResults')} <Link to={""} className="link">{t('browsePage.clearSearch')}</Link></h1>
+        <h1>{t('browsePage.noResults')} <button onClick={() => setSearchParams()} className="link">{t('browsePage.clearSearch')}</button></h1>
         : <>
           <h1>{searchParams.size > 0 ? "Produits correspondant à votre recherche" : "Tous nos produits"}</h1>
           <div className='ebr_browse-page-content'>{books?.map(book => <BookCard key={book.id} book={book}></BookCard>)}</div>

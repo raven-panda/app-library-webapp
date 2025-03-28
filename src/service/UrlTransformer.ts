@@ -44,9 +44,8 @@ export default class UrlTransformer {
         }
     }
 
-    public static transformSearchBooksQuery(searchParams: URLSearchParams): ISearchBooks {
-        return {
-            searchAll: this.safeParseString(searchParams.get("searchAll")),
+    public static transformSearchBooksQuery(searchParams: URLSearchParams, includeSearchAll: boolean = true): ISearchBooks {
+        const final: ISearchBooks = {
             author: this.safeParseString(searchParams.get("author")),
             editor: this.safeParseString(searchParams.get("editor")),
             genre: this.safeParseString(searchParams.get("genre")),
@@ -54,10 +53,15 @@ export default class UrlTransformer {
             language: this.safeParseString(searchParams.get("language")),
             priceRange: this.safeParseArray(searchParams.get("priceRange"), this.safeParseNumber),
             targetAudience: this.safeParseString(searchParams.get("targetAudience")),
-            theme: this.safeParseString(searchParams.get("theme")),
+            themes: this.safeParseArray(searchParams.get("themes"), this.safeParseString),
             title: this.safeParseString(searchParams.get("title")),
             minReviewsNumber: this.safeParseNumber(searchParams.get("minReviewsNumber")),
         };
+
+        if (includeSearchAll)
+            final.searchAll = this.safeParseString(searchParams.get("searchAll"));
+
+        return final;
     }
 
     public static encodeFromObject(params: Record<string, any> | object): string {

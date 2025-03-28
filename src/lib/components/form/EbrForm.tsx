@@ -8,9 +8,9 @@ import {FormMatrix, FormMatrixItem} from "@/lib/types/interfaces/FormMatrix.ts";
 import {FormBuilder, FormBuilderItem} from "@/lib/types/interfaces/FormBuilder.ts";
 import {AssertionLabels, FormGlobalAssertion, FormGlobalAssertionLabels} from "@/lib/types/enums/AssertionEnum.ts";
 
-export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton }: {className?: string; defaultData?: Record<string, string|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton?: ReactNode|undefined; }) {
+export default function EbrForm({ className, defaultData, onSubmit, formBuilder, formMatrix, assertions, submitButton }: {className?: string; defaultData?: Record<string, string|string[]|number|boolean|number[]|undefined>; onSubmit: (data: Record<string, any>) => void; formBuilder: FormBuilder; formMatrix?: FormMatrix; assertions?: FormGlobalAssertion[]; submitButton?: ReactNode|undefined; }) {
   const {t} = useTranslation();
-  const [formData, setFormData] = useState<Record<string, string|number|boolean|number[]|undefined>>(defaultData ?? {});
+  const [formData, setFormData] = useState<Record<string, string|string[]|number|boolean|number[]|undefined>>(defaultData ?? {});
   const [globalErrors, setGlobalErrors] = useState<string[]>();
   const [errors, setErrors] = useState<{fieldName: string; message: string;}[]>();
 
@@ -41,7 +41,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
 
   const processField = (field: FormBuilderItem, error?: string) => {
     const originalValue = formData[field.name];
-    const setFieldValue = (newValue: string|number|boolean|number[]|undefined) => {
+    const setFieldValue = (newValue: string|string[]|number|boolean|number[]|undefined) => {
       setFormData(prev => ({
         ...prev,
         [field.name]: newValue
@@ -52,10 +52,20 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
       if (field.rangeMin === undefined || field.rangeMax === undefined)
         throw new Error(`${field.rangeMin === undefined && field.rangeMax === undefined ? "rangeMin and rangeMax" : field.rangeMax === undefined ? "rangeMax" : "rangeMin"} attribute required for range input ${field.name}.`);
       return <SliderInput key={field.name} setFieldValue={setFieldValue} label={field.label} name={field.name} rangeMin={field.rangeMin} rangeMax={field.rangeMax} step={field.step} unit={field.unit} error={error} />;
-    } else if (field.type === "dropdown") {
+    } else if (field.type === "dropdown" || field.type === "multi-dropdown") {
       if (!field.dropdownOptions)
         throw new Error("Please provide dropdown options for dropdown " + field.name);
-      return <Dropdown key={field.name} defaultValue={parseFieldValue(originalValue, "dropdown")} setFieldValue={setFieldValue} name={field.name} label={field.label ?? <></>} placeholder={field.placeholder ?? ""} options={field.dropdownOptions} error={error} />;
+      return <Dropdown
+        key={field.name}
+        isMultiSelect={field.type === "multi-dropdown"}
+        defaultValue={parseFieldValue(originalValue, "dropdown")}
+        setFieldValue={setFieldValue}
+        name={field.name}
+        label={field.label ?? <></>}
+        placeholder={field.placeholder ?? ""}
+        options={field.dropdownOptions}
+        error={error}
+      />;
     } else {
       return <FieldInput key={field.name} setFieldValue={setFieldValue} defaultValue={parseFieldValue(originalValue, "fieldinput")} placeholder={field.placeholder ?? ""} label={field.label} name={field.name} type={field.type} error={error} icon={field.icon ?? <></>} iconButtonType={field.isIconButtonSubmit ? "submit" : "disabled"} />;
     }
@@ -71,7 +81,7 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
       case "range":
         return Array.isArray(value) && value.length === 2 && value.every(v => typeof v === "number") ? value : undefined;
       case "dropdown":
-        return typeof value === "string" || (Array.isArray(value) && value.every(v => typeof v === "string")) ? value : undefined;
+        return typeof value === "string" ? value : Array.isArray(value) && value.every(v => typeof v === "string") ? new Set(value) : undefined;
       default:
         return undefined;
     }
@@ -83,7 +93,6 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
 
     if (validationData.valid) {
       onSubmit(formData);
-      console.log({ formData });
       setGlobalErrors(undefined);
       setErrors(undefined);
     } else if (validationData.invalidGlobalAssertions && validationData.invalidGlobalAssertions.length > 0) {
@@ -148,19 +157,21 @@ export default function EbrForm({ className, defaultData, onSubmit, formBuilder,
     }
   };
 
-  const validateRequiredField = (field: FormBuilderItem, value: string | number | boolean | number[] | undefined): boolean => {
+  const validateRequiredField = (field: FormBuilderItem, value: string | string[] | number | boolean | number[] | undefined): boolean => {
     switch (field.type) {
       case "range":
         return value !== undefined && Array.isArray(value) && value.length === 2 && value[0] !== undefined && value[1] !== undefined;
       case "dropdown":
       case "text":
         return value !== undefined && typeof value === "string" && value.length > 0;
+      case "multi-dropdown":
+        return value !== undefined && Array.isArray(value) && value.filter(v => v).length > 0;
       default:
         return value !== undefined;
     }
   };
 
-  const validateFieldAssertion = (field: FormBuilderItem, value: string | number | boolean | number[] | undefined): boolean => {
+  const validateFieldAssertion = (field: FormBuilderItem, value: string | string[] | number | boolean | number[] | undefined): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     switch (field.assertion) {

@@ -54,8 +54,8 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 submitOnChange: true
             },
             {
-                name: "theme",
-                type: "dropdown",
+                name: "themes",
+                type: "multi-dropdown",
                 placeholder: translate("form.themePlaceholder"),
                 dropdownOptions: Object.entries(BookThemeLabels).map(([k, v]) => ({
                     id: k,
@@ -119,7 +119,7 @@ const getBrowseFormBuilder: FormBuilderGetter = (translate: (pointer: string) =>
                 menuTitle: translate("form.browseGeneral"),
             },
             {
-                fields: ["genre", "theme", "targetAudience", "language"],
+                fields: ["genre", "themes", "targetAudience", "language"],
                 menuTitle: translate("form.contentSection"),
                 isDropdownMenu: true
             },

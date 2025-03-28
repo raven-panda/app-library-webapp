@@ -5,7 +5,7 @@ export interface ISearchBooks {
   editor?: string|null;
   isbn?: string|null;
   genre?: string|null;
-  theme?: string|null;
+  themes?: string[]|null;
   targetAudience?: string|null;
   language?: string|null;
   minReviewsNumber?: number|null;

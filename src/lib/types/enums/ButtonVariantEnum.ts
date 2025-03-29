@@ -1,3 +1,1 @@
-export type ButtonVariant =
-  | "default"
-  | "filled";
+export type ButtonVariant = 'default' | 'filled';

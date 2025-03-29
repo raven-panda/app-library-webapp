@@ -1,4 +1,4 @@
-import {HttpStatusCode} from "axios";
+import { HttpStatusCode } from 'axios';
 
 export interface ApiResponse<TData> {
   data?: TData;

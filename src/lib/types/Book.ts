@@ -1,9 +1,9 @@
-import { IAuthor } from "./Author";
-import { BookFormatType } from "./enums/book/BookFormatEnum";
-import { BookGenreType } from "./enums/book/BookGenreEnum";
-import { BookThemeType } from "./enums/book/BookThemeEnum";
-import { LanguageCode } from "iso-639-1";
-import { TargetAudienceType } from "./enums/TargetAudienceEnum";
+import { IAuthor } from './Author';
+import { BookFormatType } from './enums/book/BookFormatEnum';
+import { BookGenreType } from './enums/book/BookGenreEnum';
+import { BookThemeType } from './enums/book/BookThemeEnum';
+import { LanguageCode } from 'iso-639-1';
+import { TargetAudienceType } from './enums/TargetAudienceEnum';
 
 export interface IBook {
   id?: string;
@@ -16,7 +16,7 @@ export interface IBook {
   editor: string;
   genre: BookGenreType;
   themes: BookThemeType[];
-  otherThemes: string[]|null;
+  otherThemes: string[] | null;
   format: BookFormatType;
   isPhysicalFormat: boolean;
   languageCode: LanguageCode;

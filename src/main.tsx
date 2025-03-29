@@ -9,7 +9,7 @@ import { getInitialTheme } from './hook/Theme.tsx';
 I18nextInit();
 
 // Initializing theme to avoid color flash
-document.body.classList.toggle("dark", getInitialTheme() === "dark");
+document.body.classList.toggle('dark', getInitialTheme() === 'dark');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

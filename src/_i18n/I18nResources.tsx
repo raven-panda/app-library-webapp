@@ -1,5 +1,5 @@
-import {Resource, ResourceLanguage} from "i18next";
-import {localesEnUs, localesFrFr} from "./I18nLocalesResources";
+import { Resource, ResourceLanguage } from 'i18next';
+import { localesEnUs, localesFrFr } from './I18nLocalesResources';
 
 /*interface ToggleResource {
   false: string;
@@ -60,7 +60,7 @@ interface CustomLanguage extends ResourceLanguage {
 
       minReviewsNumber: string;
 
-      priceRange: string,
+      priceRange: string;
 
       reviewsNumberRange: string;
 
@@ -82,7 +82,7 @@ interface CustomLanguage extends ResourceLanguage {
       atLeastOneValueSpecifiedSet: string;
 
       numberNotZero: string;
-    }
+    };
 
     bookGenre: {
       novel: string;
@@ -147,273 +147,310 @@ interface CustomLanguage extends ResourceLanguage {
 }
 
 const resources: CustomResource = {
-  "en-US": {
+  'en-US': {
     translation: {
-      loading: "Loading",
+      loading: 'Loading',
       pageNotFound: "Oops! This page doesn't exists.",
-      pageNotFoundBack: "Go back to previous page",
-      invalidForm: "Error(s) found in the form.",
+      pageNotFoundBack: 'Go back to previous page',
+      invalidForm: 'Error(s) found in the form.',
 
-      thisFieldIsRequired: "This field is required",
-      thisFieldIsInvalid: "This field is invalid",
+      thisFieldIsRequired: 'This field is required',
+      thisFieldIsInvalid: 'This field is invalid',
 
       welcomePage: {
-        title: "the online library",
-        subTitle: "Your favorite books in just a few clicks"
+        title: 'the online library',
+        subTitle: 'Your favorite books in just a few clicks',
       },
 
       browsePage: {
-        noResults: "No results. Try to search something else.",
-        clearSearch: "Clear search",
+        noResults: 'No results. Try to search something else.',
+        clearSearch: 'Clear search',
       },
 
       form: {
-        searchAllInput: "Search a book title, an author, an editor, etc.",
-        delete: "Delete",
-        noValueAvailable: "No value available",
-        searchValue: "Search a value",
+        searchAllInput: 'Search a book title, an author, an editor, etc.',
+        delete: 'Delete',
+        noValueAvailable: 'No value available',
+        searchValue: 'Search a value',
 
-        browseGeneral: "General informations",
+        browseGeneral: 'General informations',
 
-        author: "Search an author",
-        title: "Search a title",
-        editor: "Search an editor",
-        isbn: "Search an ISBN",
+        author: 'Search an author',
+        title: 'Search a title',
+        editor: 'Search an editor',
+        isbn: 'Search an ISBN',
 
-        genre: "Genre",
-        genrePlaceholder: "Select a genre",
+        genre: 'Genre',
+        genrePlaceholder: 'Select a genre',
 
-        theme: "Theme",
-        themePlaceholder: "Select a theme",
+        theme: 'Theme',
+        themePlaceholder: 'Select a theme',
 
-        targetAudience: "Target public",
-        targetAudiencePlaceholder: "Select a target public",
+        targetAudience: 'Target public',
+        targetAudiencePlaceholder: 'Select a target public',
 
-        minReviewsNumber: "Minimum reviews amount",
+        minReviewsNumber: 'Minimum reviews amount',
 
-        language: "Language",
-        languagePlaceholder: "Select a language",
+        language: 'Language',
+        languagePlaceholder: 'Select a language',
 
-        formatPlaceholder: "Select a format",
+        formatPlaceholder: 'Select a format',
 
-        contentSection: "Content and classification",
-        priceReviewsSection: "Price and reviews",
+        contentSection: 'Content and classification',
+        priceReviewsSection: 'Price and reviews',
 
-        priceRange: "Price range",
+        priceRange: 'Price range',
 
-        reviewsNumberRange: "Review range",
+        reviewsNumberRange: 'Review range',
 
-        searchButtonAriaLabel: "Search button",
-        searchFieldAriaLabel: "Field input for text to search",
-        resetButtonAriaLabel: "Reset text field",
-        inputAriaLabel: "Enter a value here",
-        advancedSearch: "Advanced search",
+        searchButtonAriaLabel: 'Search button',
+        searchFieldAriaLabel: 'Field input for text to search',
+        resetButtonAriaLabel: 'Reset text field',
+        inputAriaLabel: 'Enter a value here',
+        advancedSearch: 'Advanced search',
 
-        submit: "Submit",
-        search: "Search"
+        submit: 'Submit',
+        search: 'Search',
       },
 
       assertions: {
-        atLeastOneValueSet: "At least one value must be set",
-        atLeastOneValueSpecifiedSet: "At least one of these value must be set : ",
+        atLeastOneValueSet: 'At least one value must be set',
+        atLeastOneValueSpecifiedSet:
+          'At least one of these value must be set : ',
 
-        numberNotZero: "This value must be higher than 0"
+        numberNotZero: 'This value must be higher than 0',
       },
 
       bookGenre: {
-        novel: "Novel",
-        shortStory: "Short Story",
-        poesy: "Poetry",
-        drama: "Drama",
-        essay: "Essay",
-        biography: "Biography",
-        autobiography: "Autobiography",
-        tale: "Fairy Tale",
-        comic: "Comic, Graphic Novel",
-        manga: "Manga",
-        travelStory: "Travel Narrative",
+        novel: 'Novel',
+        shortStory: 'Short Story',
+        poesy: 'Poetry',
+        drama: 'Drama',
+        essay: 'Essay',
+        biography: 'Biography',
+        autobiography: 'Autobiography',
+        tale: 'Fairy Tale',
+        comic: 'Comic, Graphic Novel',
+        manga: 'Manga',
+        travelStory: 'Travel Narrative',
         children: "Children's Literature",
-        other: "Other"
+        other: 'Other',
       },
 
       bookTheme: {
-        loveAndPassion: "Love and Passion (romance, relationships, desire)",
-        friendshipAndHumanRelation: "Friendship and Human Relations (loyalty, betrayal, brotherhood)",
-        questForIdentity: "The Quest for Identity (self-discovery, personal transformation)",
-        goodAndEvil: "Good and Evil (morality, ethical dilemmas)",
-        libertyAndOppression: "Liberty and Oppression (dictatorships, rebellions, quest for independence)",
-        travelExploration: "Travel and Exploration (discovery of new lands, exile)",
-        warConsequences: "War and Its Consequences (battles, trauma, resistance)",
-        justiceInjustice: "Justice and Injustice (trials, corruption, revenge)",
-        fantasyAndSupernatural: "Fantasy and the Supernatural (mythical creatures, magic, paranormal)",
-        scienceProgressAndExcesses: "Scientific Progress and Its Dangers (cyberpunk, AI, cloning)",
-        dreamImaginary: "Dreams and Imagination (dreamlike worlds, illusions, fiction within fiction)",
-        timeMemory: "Time and Memory (nostalgia, flashbacks, time loops)",
-        lonelinessIsolation: "Loneliness and Isolation (exile, marginality, solitary survival)",
-        famillyHeritage: "Family and Heritage (family relationships, family secrets)",
-        destinyFreewill: "Destiny and Free Will (fate, choices, predictions)",
-        other: "Other"
+        loveAndPassion: 'Love and Passion (romance, relationships, desire)',
+        friendshipAndHumanRelation:
+          'Friendship and Human Relations (loyalty, betrayal, brotherhood)',
+        questForIdentity:
+          'The Quest for Identity (self-discovery, personal transformation)',
+        goodAndEvil: 'Good and Evil (morality, ethical dilemmas)',
+        libertyAndOppression:
+          'Liberty and Oppression (dictatorships, rebellions, quest for independence)',
+        travelExploration:
+          'Travel and Exploration (discovery of new lands, exile)',
+        warConsequences:
+          'War and Its Consequences (battles, trauma, resistance)',
+        justiceInjustice: 'Justice and Injustice (trials, corruption, revenge)',
+        fantasyAndSupernatural:
+          'Fantasy and the Supernatural (mythical creatures, magic, paranormal)',
+        scienceProgressAndExcesses:
+          'Scientific Progress and Its Dangers (cyberpunk, AI, cloning)',
+        dreamImaginary:
+          'Dreams and Imagination (dreamlike worlds, illusions, fiction within fiction)',
+        timeMemory: 'Time and Memory (nostalgia, flashbacks, time loops)',
+        lonelinessIsolation:
+          'Loneliness and Isolation (exile, marginality, solitary survival)',
+        famillyHeritage:
+          'Family and Heritage (family relationships, family secrets)',
+        destinyFreewill: 'Destiny and Free Will (fate, choices, predictions)',
+        other: 'Other',
       },
 
       bookTargetAudience: {
-        academic: "Academic readers (textbooks, reference books, etc.)",
-        entertainment: "Entertainment literature (light books, comedies, etc.)",
-        personalDevelopment: "Personal development (self-help guides, psychology, etc.)",
-        committedAndSocial: "Engaged and social literature (politics, social issues, etc.)",
-        foreignCulture: "Foreign culture (cultural guides, books for learning a language, etc.)",
-        visuallyImpaired: "Books for visually impaired (braille books, adapted e-books, etc.)",
-        peopleWithReadingDifficulties: "People with reading difficulties (simplified books, large print books, etc.)",
-        other: "Other"
+        academic: 'Academic readers (textbooks, reference books, etc.)',
+        entertainment: 'Entertainment literature (light books, comedies, etc.)',
+        personalDevelopment:
+          'Personal development (self-help guides, psychology, etc.)',
+        committedAndSocial:
+          'Engaged and social literature (politics, social issues, etc.)',
+        foreignCulture:
+          'Foreign culture (cultural guides, books for learning a language, etc.)',
+        visuallyImpaired:
+          'Books for visually impaired (braille books, adapted e-books, etc.)',
+        peopleWithReadingDifficulties:
+          'People with reading difficulties (simplified books, large print books, etc.)',
+        other: 'Other',
       },
 
       layout: {
-        refineYourSearch: "Refine your search",
-        cart: "Cart",
-        myAccount: "My account"
+        refineYourSearch: 'Refine your search',
+        cart: 'Cart',
+        myAccount: 'My account',
       },
 
       author: 'Author',
       editor: 'Editor',
       note: 'Note',
       price: 'Price',
-      reviews: "reviews",
+      reviews: 'reviews',
 
       locales: localesEnUs,
-    }
+    },
   },
-  "fr-FR": {
+  'fr-FR': {
     translation: {
-      loading: "Chargement",
+      loading: 'Chargement',
       pageNotFound: "Oops! Cette page n'existe pas.",
-      pageNotFoundBack: "Revenir en arrière",
-      invalidForm: "Il y a une/des erreur(s) dans le formulaire.",
+      pageNotFoundBack: 'Revenir en arrière',
+      invalidForm: 'Il y a une/des erreur(s) dans le formulaire.',
 
-      thisFieldIsRequired: "Ce champ est requis",
-      thisFieldIsInvalid: "Ce champ est invalide",
+      thisFieldIsRequired: 'Ce champ est requis',
+      thisFieldIsInvalid: 'Ce champ est invalide',
 
       welcomePage: {
-        title: "la bibliothèque en ligne",
-        subTitle: "Vos livres préféré en quelque clics"
+        title: 'la bibliothèque en ligne',
+        subTitle: 'Vos livres préféré en quelque clics',
       },
 
       browsePage: {
-        noResults: "Aucun résultat. Essayer de chercher autre chose.",
-        clearSearch: "Effacer la recherche",
+        noResults: 'Aucun résultat. Essayer de chercher autre chose.',
+        clearSearch: 'Effacer la recherche',
       },
 
       form: {
-        searchAllInput: "Rechercher un livre, un auteur, un éditeur, etc.",
-        delete: "Supprimer",
-        noValueAvailable: "Aucune valeur disponible",
-        searchValue: "Rechercher une valeur",
+        searchAllInput: 'Rechercher un livre, un auteur, un éditeur, etc.',
+        delete: 'Supprimer',
+        noValueAvailable: 'Aucune valeur disponible',
+        searchValue: 'Rechercher une valeur',
 
-        browseGeneral: "Informations générales",
+        browseGeneral: 'Informations générales',
 
-        author: "Rechercher un auteur",
-        title: "Rechercher un titre",
-        editor: "Rechercher un éditeur",
-        isbn: "Rechercher un ISBN",
+        author: 'Rechercher un auteur',
+        title: 'Rechercher un titre',
+        editor: 'Rechercher un éditeur',
+        isbn: 'Rechercher un ISBN',
 
-        contentSection: "Contenu et classification",
-        priceReviewsSection: "Prix et avis",
+        contentSection: 'Contenu et classification',
+        priceReviewsSection: 'Prix et avis',
 
-        genre: "Genre",
-        genrePlaceholder: "Sélectionnez un genre",
+        genre: 'Genre',
+        genrePlaceholder: 'Sélectionnez un genre',
 
-        theme: "Thème",
-        themePlaceholder: "Sélectionnez un thème",
+        theme: 'Thème',
+        themePlaceholder: 'Sélectionnez un thème',
 
-        targetAudience: "Public cible",
-        targetAudiencePlaceholder: "Sélectionnez un public cible",
+        targetAudience: 'Public cible',
+        targetAudiencePlaceholder: 'Sélectionnez un public cible',
 
-        minReviewsNumber: "Nombre d’avis minimum",
+        minReviewsNumber: 'Nombre d’avis minimum',
 
-        priceRange: "Tranche de prix",
+        priceRange: 'Tranche de prix',
 
-        reviewsNumberRange: "Plage de note",
+        reviewsNumberRange: 'Plage de note',
 
-        language: "Langue",
-        languagePlaceholder: "Sélectionnez une langue",
+        language: 'Langue',
+        languagePlaceholder: 'Sélectionnez une langue',
 
-        formatPlaceholder: "Sélectionnez un format",
+        formatPlaceholder: 'Sélectionnez un format',
 
-        searchButtonAriaLabel: "Boutton rechercher",
-        searchFieldAriaLabel: "Champ de recherche",
-        resetButtonAriaLabel: "Effacer le texte du champ",
-        inputAriaLabel: "Entrez une valeur",
-        advancedSearch: "Recherche avancée",
-        submit: "Envoyer",
-        search: "Rechercher"
+        searchButtonAriaLabel: 'Boutton rechercher',
+        searchFieldAriaLabel: 'Champ de recherche',
+        resetButtonAriaLabel: 'Effacer le texte du champ',
+        inputAriaLabel: 'Entrez une valeur',
+        advancedSearch: 'Recherche avancée',
+        submit: 'Envoyer',
+        search: 'Rechercher',
       },
 
       assertions: {
-        atLeastOneValueSet: "Au moins une valeur doit être completée",
-        atLeastOneValueSpecifiedSet: "Au moins une de ces valeurs doit être completée : ",
+        atLeastOneValueSet: 'Au moins une valeur doit être completée',
+        atLeastOneValueSpecifiedSet:
+          'Au moins une de ces valeurs doit être completée : ',
 
-        numberNotZero: "La valeur de ce champ doit être supérieur à zéro"
+        numberNotZero: 'La valeur de ce champ doit être supérieur à zéro',
       },
 
       bookGenre: {
-        novel: "Roman",
-        shortStory: "Nouvelle",
-        poesy: "Poésie",
-        drama: "Théâtre",
-        essay: "Essai",
-        biography: "Biographie",
-        autobiography: "Autobiographie",
-        tale: "Conte",
-        comic: "Bande dessiné, comics",
-        manga: "Manga",
-        travelStory: "Récit de voyage",
-        children: "Littérature jeuneusse",
-        other: "Autre",
+        novel: 'Roman',
+        shortStory: 'Nouvelle',
+        poesy: 'Poésie',
+        drama: 'Théâtre',
+        essay: 'Essai',
+        biography: 'Biographie',
+        autobiography: 'Autobiographie',
+        tale: 'Conte',
+        comic: 'Bande dessiné, comics',
+        manga: 'Manga',
+        travelStory: 'Récit de voyage',
+        children: 'Littérature jeuneusse',
+        other: 'Autre',
       },
 
       bookTheme: {
         loveAndPassion: "L'amour et la passion (romance, relations, désir)",
-        friendshipAndHumanRelation: "L'amitié et les relations humaines (loyauté, trahison, fraternité)",
-        questForIdentity: "La quête d’identité (découverte de soi, transformation personnelle)",
-        goodAndEvil: "Le bien et le mal (moralité, dilemmes éthiques)",
-        libertyAndOppression: "La liberté et l’oppression (dictatures, rébellions, quête d’indépendance)",
-        travelExploration: "Le voyage et l’exploration (découverte de nouvelles terres, exil)",
-        warConsequences: "La guerre et ses conséquences (batailles, traumatismes, résistances)",
-        justiceInjustice: "La justice et l’injustice (procès, corruption, vengeance)",
-        fantasyAndSupernatural: "Le fantastique et le surnaturel (créatures mythiques, magie, paranormal)",
-        scienceProgressAndExcesses: "Le progrès scientifique et ses dérives (cyberpunk, IA, clonage)",
-        dreamImaginary: "Le rêve et l’imaginaire (mondes oniriques, illusions, fictions dans la fiction)",
-        timeMemory: "Le temps et la mémoire (nostalgie, flashbacks, boucle temporelle)",
-        lonelinessIsolation: "La solitude et l’isolement (exil, marginalité, survie en solitaire)",
-        famillyHeritage: "La famille et l’héritage (relations familiales, secrets de famille)",
-        destinyFreewill: "Le destin et le libre arbitre (fatalité, choix, prédictions)",
-        other: "Autre"
+        friendshipAndHumanRelation:
+          "L'amitié et les relations humaines (loyauté, trahison, fraternité)",
+        questForIdentity:
+          'La quête d’identité (découverte de soi, transformation personnelle)',
+        goodAndEvil: 'Le bien et le mal (moralité, dilemmes éthiques)',
+        libertyAndOppression:
+          'La liberté et l’oppression (dictatures, rébellions, quête d’indépendance)',
+        travelExploration:
+          'Le voyage et l’exploration (découverte de nouvelles terres, exil)',
+        warConsequences:
+          'La guerre et ses conséquences (batailles, traumatismes, résistances)',
+        justiceInjustice:
+          'La justice et l’injustice (procès, corruption, vengeance)',
+        fantasyAndSupernatural:
+          'Le fantastique et le surnaturel (créatures mythiques, magie, paranormal)',
+        scienceProgressAndExcesses:
+          'Le progrès scientifique et ses dérives (cyberpunk, IA, clonage)',
+        dreamImaginary:
+          'Le rêve et l’imaginaire (mondes oniriques, illusions, fictions dans la fiction)',
+        timeMemory:
+          'Le temps et la mémoire (nostalgie, flashbacks, boucle temporelle)',
+        lonelinessIsolation:
+          'La solitude et l’isolement (exil, marginalité, survie en solitaire)',
+        famillyHeritage:
+          'La famille et l’héritage (relations familiales, secrets de famille)',
+        destinyFreewill:
+          'Le destin et le libre arbitre (fatalité, choix, prédictions)',
+        other: 'Autre',
       },
 
       bookTargetAudience: {
-        academic: "Lecteurs académiques (manuels scolaires, livres de référence, etc.)",
-        entertainment: "Littérature de divertissement (livres légers, comédies, etc.)",
-        personalDevelopment: "Développement personnel (guides pratiques, psychologie, etc.)",
-        committedAndSocial: "Littérature engagée et sociale (la politique, les questions sociales, etc.)",
-        foreignCulture: "Culture étrangère (guide culturels, livre pour apprendre une langue, etc.)",
-        visuallyImpaired: "Livres pour malvoyants (livres en braille, e-books adaptés, etc.)",
-        peopleWithReadingDifficulties: "Personnes ayant des difficultés de lecture (livres simplifiés, livres en grands caractères, etc.)",
-        other: "Autre"
+        academic:
+          'Lecteurs académiques (manuels scolaires, livres de référence, etc.)',
+        entertainment:
+          'Littérature de divertissement (livres légers, comédies, etc.)',
+        personalDevelopment:
+          'Développement personnel (guides pratiques, psychologie, etc.)',
+        committedAndSocial:
+          'Littérature engagée et sociale (la politique, les questions sociales, etc.)',
+        foreignCulture:
+          'Culture étrangère (guide culturels, livre pour apprendre une langue, etc.)',
+        visuallyImpaired:
+          'Livres pour malvoyants (livres en braille, e-books adaptés, etc.)',
+        peopleWithReadingDifficulties:
+          'Personnes ayant des difficultés de lecture (livres simplifiés, livres en grands caractères, etc.)',
+        other: 'Autre',
       },
 
       layout: {
-        refineYourSearch: "Affiner votre recherche",
-        cart: "Panier",
-        myAccount: "Mon compte"
+        refineYourSearch: 'Affiner votre recherche',
+        cart: 'Panier',
+        myAccount: 'Mon compte',
       },
 
       author: 'Auteur',
       editor: 'Éditeur',
       note: 'Note',
       price: 'Prix',
-      reviews: "avis",
+      reviews: 'avis',
 
-      locales: localesFrFr
-    }
-  }
+      locales: localesFrFr,
+    },
+  },
 };
 
 export default resources;
